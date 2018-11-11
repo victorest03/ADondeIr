@@ -13,9 +13,9 @@
             return _da.GetAll(usuario => usuario.isDeleted==false);
         }
 
-        public Usuario ValidarUser(string cUsuario, string cPassword)
+        public Usuario ValidarUser(string cEmail, string cPassword)
         {
-            return _da.ValidarLogin(cUsuario, cPassword);
+            return _da.ValidarLogin(cEmail, cPassword);
         }
 
         public Usuario Get(int id)

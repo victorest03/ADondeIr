@@ -8,7 +8,7 @@
     public class UsuarioDa : Repository<Usuario>
     {
 
-        public Usuario ValidarLogin(string cUsuario, string cPassword)
+        public Usuario ValidarLogin(string cEmail, string cPassword)
         {
             Usuario result = null;
 
@@ -22,17 +22,16 @@
                           ,u.cNombres
                           ,u.cApellidos
                           ,u.cEmail
-                          ,u.cUsuario
                           ,u.cPassword
                         FROM Usuario u
-                          WHERE u.isDeleted = 0 AND u.cUsuario = @0 AND u.cPassword = @1", cUsuario, cPassword);
+                          WHERE u.isDeleted = 0 AND u.cEmail = @0 AND u.cPassword = @1", cEmail, cPassword);
                 }
 
 
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                 Logger.Error(e.Message);
             }
 
             return result;

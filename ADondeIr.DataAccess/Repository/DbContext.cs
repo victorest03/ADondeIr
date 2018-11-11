@@ -1,13 +1,11 @@
 ﻿namespace ADondeIr.DataAccess.Repository
 {
-    using System;
-    using System.Data.Common;
-    using System.IO;
-    using System.Linq;
-    using System.Linq.Expressions;
     using Model;
     using NPoco;
     using NPoco.Linq;
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
 
     public class DbContext
     {
@@ -23,41 +21,41 @@
         {
         }
 
-        protected override void OnExecutedCommand(DbCommand cmd)
-        {
-#if DEBUG
-            var date = DateTime.Now;
-            //File.WriteAllText("//.txt", FormatCommand(cmd));
-            var path = $"{AppDomain.CurrentDomain.BaseDirectory}SqlLogs\\Sql_{date.Year}-{date.Month:00}-{date.Day:00}.txt";
+//        protected override void OnExecutedCommand(DbCommand cmd)
+//        {
+//#if DEBUG
+//            var date = DateTime.Now;
+//            //File.WriteAllText("//.txt", FormatCommand(cmd));
+//            var path = $"{AppDomain.CurrentDomain.BaseDirectory}SqlLogs\\Sql_{date.Year}-{date.Month:00}-{date.Day:00}.txt";
 
-            if (!File.Exists(path))
-            {
-                File.Create(path).Dispose();
-                using (var tw = File.AppendText(path))
-                {
-                    tw.WriteLine($"[SQL] {date.TimeOfDay.ToString()}:");
-                    tw.WriteLine(FormatCommand(cmd));
-                    tw.WriteLine("--------------------------------------------------");
-                    tw.Close();
-                }
+//            if (!File.Exists(path))
+//            {
+//                File.Create(path).Dispose();
+//                using (var tw = File.AppendText(path))
+//                {
+//                    tw.WriteLine($"[SQL] {date.TimeOfDay.ToString()}:");
+//                    tw.WriteLine(FormatCommand(cmd));
+//                    tw.WriteLine("--------------------------------------------------");
+//                    tw.Close();
+//                }
 
-            }
+//            }
 
-            else if (File.Exists(path))
-            {
-                using (var tw = File.AppendText(path))
-                {
-                    tw.WriteLine($"[SQL] {date.TimeOfDay.ToString()}:");
-                    tw.WriteLine(FormatCommand(cmd));
-                    tw.WriteLine("--------------------------------------------------");
-                    tw.Close();
-                }
-            }
-#endif
+//            else if (File.Exists(path))
+//            {
+//                using (var tw = File.AppendText(path))
+//                {
+//                    tw.WriteLine($"[SQL] {date.TimeOfDay.ToString()}:");
+//                    tw.WriteLine(FormatCommand(cmd));
+//                    tw.WriteLine("--------------------------------------------------");
+//                    tw.Close();
+//                }
+//            }
+//#endif
 
 
-            base.OnExecutedCommand(cmd);
-        }
+//            base.OnExecutedCommand(cmd);
+//        }
 
         protected override bool OnInserting(InsertContext insertContext)
         {
