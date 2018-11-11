@@ -1,0 +1,60 @@
+﻿div.modal{
+    overflow-y: auto;
+}
+
+div.helper-seleccion{
+    position:relative;
+}
+
+input.helper-seleccion {
+    padding-right: 28px;
+}
+
+.helper-seleccion-input{
+    cursor:pointer;
+    padding-right: 30px !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    margin: 0;
+    border: 0;
+    padding: 6px 12px;
+    z-index: 20;
+}
+
+i.helper-seleccion-icon {
+    position: absolute;
+    right: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    cursor: pointer; 
+}
+
+table.helper-seleccion {
+    & > tbody {
+        tr {
+            cursor: pointer;
+
+            td.col-check {
+                width: 15px;
+            }
+        }
+    }
+
+    & > tfoot {
+        & > tr > td, & > tr > th{
+            padding: 0 !important;
+
+            & > input, & > label, & > select {
+                padding: 5px !important;
+                height: auto !important;
+                border-color: transparent !important;
+                width: 100% !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "Content/js/Shared/_Layout.min.js",
+    "inputFiles": [
+      "Content/js/Shared/_Layout.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/adminLTE/css/AdminLTE.min.css",
+    "inputFiles": [
+      "Content/adminLTE/css/AdminLTE.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/adminLTE/js/adminlte.min.js",
+    "inputFiles": [
+      "Content/adminLTE/js/adminlte.js"
+    ]
+  }
+]
