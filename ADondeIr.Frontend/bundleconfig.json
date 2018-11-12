@@ -34,5 +34,11 @@
     "inputFiles": [
       "Content/js/dataTables.config.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/TipoActividad/_Mantenimiento.min.js",
+    "inputFiles": [
+      "Content/js/TipoActividad/_Mantenimiento.js"
+    ]
   }
 ]

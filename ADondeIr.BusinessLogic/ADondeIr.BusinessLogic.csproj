@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="EmpresaBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoActividadBl.cs" />
     <Compile Include="UsuarioBl.cs" />
   </ItemGroup>
   <ItemGroup>

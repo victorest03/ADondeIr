@@ -1,0 +1,35 @@
+﻿@using System.Web.Optimization
+@model ADondeIr.Model.TipoActividad
+<div class="modal fade" id="modalTipoActividadMant" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">@(Model.pkTipoActividad != 0 ? "Modificar" : "Registrar") Datos de TipoActividad</h4>
+            </div>
+            @using (Ajax.BeginForm("Mantenimiento", "TipoActividad", null, new AjaxOptions() { OnSuccess = "OnSuccessTipoActividad", OnFailure = "OnFailureTipoActividad", Confirm = "Esta Seguro?", LoadingElementId = "Loading" }, new { id = "frmTipoActividadMant", @class = "form-horizontal" }))
+            {
+                <div class="modal-body">
+                    @Html.HiddenFor(model => model.pkTipoActividad)
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cTipoActividad)
+                            @Html.EditorFor(model => model.cTipoActividad, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cTipoActividad, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary pull-right" id="btnGuardar">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/Validation")
+<script src="~/Content/plugins/select2/js/select2.js"></script>
+<script src="~/Content/js/TipoActividad/_Mantenimiento.min.js?v=@DateTime.Now.Ticks.ToString()"></script>

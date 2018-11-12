@@ -193,6 +193,11 @@
     <Content Include="Content\js\Shared\_Layout.min.js">
       <DependentUpon>_Layout.js</DependentUpon>
     </Content>
+    <Content Include="Content\js\TipoActividad\Index.js" />
+    <Content Include="Content\js\TipoActividad\_Mantenimiento.js" />
+    <Content Include="Content\js\TipoActividad\_Mantenimiento.min.js">
+      <DependentUpon>_Mantenimiento.js</DependentUpon>
+    </Content>
     <Content Include="Content\plugins\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Content\plugins\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="Content\plugins\bootstrap\dist\css\bootstrap.css" />
@@ -746,6 +751,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TipoActividadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -969,6 +975,8 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Empresa\Index.cshtml" />
     <Content Include="Views\Empresa\_Mantenimiento.cshtml" />
+    <Content Include="Views\TipoActividad\Index.cshtml" />
+    <Content Include="Views\TipoActividad\_Mantenimiento.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
