@@ -98,30 +98,6 @@ function invocarModal(url, onSuccess) {
         }
     });
 }
-function deleteAjax(url, onSuccess, message) {
-    swal({
-        title: "Confirmacion",
-        text: message ? message : "Esta Seguro ??",
-        type: "warning",
-        showCancelButton: true,
-        closeOnConfirm: false,
-        showLoaderOnConfirm: true
-    },
-        function () {
-            $.ajax({
-                url: url,
-                type: "POST",
-                success: function (data) {
-                    if (data.Success === true) {
-                        swal("Bien!", "Registro Eliminado Correctamente", "success");
-                        onSuccess(data);
-                    } else {
-                        swal("Algo Salio Mal!", data.Message, "error");
-                    }
-                }
-            });
-        });
-}
 function actionAjax(url, data, type, messageSuccess, onSuccess, message) {
     swal({
         title: "Confirmacion",
@@ -201,7 +177,6 @@ function getDate() {
         LastDay: ultimoDia
     };
 }
-
 function getFormatDate(date) {
     const array = date.split("/");
     const f = new Date(array[2], array[1] - 1, array[0]);

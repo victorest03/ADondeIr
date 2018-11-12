@@ -34,5 +34,12 @@
 
             return View(model);
         }
+
+        [Autenticado]
+        public ActionResult Logout()
+        {
+            SessionHelper.DestroyUserSessionAndCookie();
+            return RedirectToAction("Index");
+        }
     }
 }

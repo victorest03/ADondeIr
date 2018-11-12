@@ -16,5 +16,17 @@
     "inputFiles": [
       "Content/adminLTE/js/adminlte.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/Empresa/Index.min.js",
+    "inputFiles": [
+      "Content/js/Empresa/Index.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/js/Empresa/_Mantenimiento.min.js",
+    "inputFiles": [
+      "Content/js/Empresa/_Mantenimiento.js"
+    ]
   }
 ]
