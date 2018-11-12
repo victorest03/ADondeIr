@@ -1,47 +1,45 @@
 ﻿@using System.Web.Optimization
 @model ADondeIr.Model.Empresa
-<div class="parent">
-    <div class="modal fade" id="modalEmpresaMant" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">@(Model.pkEmpresa != 0 ? "Modificar" : "Registrar") Datos de Empresa</h4>
-                </div>
-                @using (Ajax.BeginForm("Mantenimiento", "Empresa", null, new AjaxOptions() { OnSuccess = "OnSuccessEmpresa", OnFailure = "OnFailureEmpresa", Confirm = "Esta Seguro?", LoadingElementId = "Loading" }, new { id = "frmEmpresaMant", @class = "form-horizontal" }))
-                {
-                    <div class="modal-body">
-                        @Html.HiddenFor(model => model.pkEmpresa)
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                @Html.LabelFor(model => model.cEmpresa)
-                                @Html.EditorFor(model => model.cEmpresa, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.cEmpresa, null, new { @class = "label label-danger" })
-                            </div>
-                            <div class="col-sm-12">
-                                @Html.LabelFor(model => model.cDireccion)
-                                @Html.EditorFor(model => model.cDireccion, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.cDireccion, null, new { @class = "label label-danger" })
-                            </div>
-                            <div class="col-sm-12">
-                                @Html.LabelFor(model => model.cTelefono)
-                                @Html.EditorFor(model => model.cTelefono, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.cTelefono, null, new { @class = "label label-danger" })
-                            </div>
+<div class="modal fade" id="modalEmpresaMant" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">@(Model.pkEmpresa != 0 ? "Modificar" : "Registrar") Datos de Empresa</h4>
+            </div>
+            @using (Ajax.BeginForm("Mantenimiento", "Empresa", null, new AjaxOptions() { OnSuccess = "OnSuccessEmpresa", OnFailure = "OnFailureEmpresa", Confirm = "Esta Seguro?", LoadingElementId = "Loading" }, new { id = "frmEmpresaMant", @class = "form-horizontal" }))
+            {
+                <div class="modal-body">
+                    @Html.HiddenFor(model => model.pkEmpresa)
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cEmpresa)
+                            @Html.EditorFor(model => model.cEmpresa, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cEmpresa, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cDireccion)
+                            @Html.EditorFor(model => model.cDireccion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cDireccion, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cTelefono)
+                            @Html.EditorFor(model => model.cTelefono, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cTelefono, null, new { @class = "label label-danger" })
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary pull-right" id="btnGuardar">Guardar</button>
-                    </div>
-                }
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary pull-right" id="btnGuardar">Guardar</button>
+                </div>
+            }
         </div>
     </div>
-
-    @Scripts.Render("~/Scripts/Validation")
-    <script src="~/Content/plugins/select2/js/select2.js"></script>
-    <script src="~/Content/js/Empresa/_Mantenimiento.min.js?v=@DateTime.Now.Ticks.ToString()"></script>
 </div>
+
+@Scripts.Render("~/Scripts/Validation")
+<script src="~/Content/plugins/select2/js/select2.js"></script>
+<script src="~/Content/js/Empresa/_Mantenimiento.min.js?v=@DateTime.Now.Ticks.ToString()"></script>

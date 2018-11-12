@@ -176,6 +176,11 @@
     </Content>
     <Content Include="Content\image\user-default-blanco.png" />
     <Content Include="Content\image\user-default.png" />
+    <Content Include="Content\js\bootstrap-datepicker.config.js" />
+    <Content Include="Content\js\dataTables.config.js" />
+    <Content Include="Content\js\dataTables.config.min.js">
+      <DependentUpon>dataTables.config.js</DependentUpon>
+    </Content>
     <Content Include="Content\js\Empresa\Index.js" />
     <Content Include="Content\js\Empresa\Index.min.js">
       <DependentUpon>Index.js</DependentUpon>

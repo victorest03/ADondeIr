@@ -16,6 +16,11 @@
             return View();
         }
 
+        public JsonResult Listado()
+        {
+            return Json(new { data = _bl.GetAll() }, JsonRequestBehavior.AllowGet);
+        }
+
         public PartialViewResult PartialMantenimiento(int id = 0)
         {
             Empresa model = null;
@@ -45,5 +50,10 @@
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Delete(int id)
+        {
+            return Json(_bl.Delete(id, GetUser<Usuario>().pkUsuario), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

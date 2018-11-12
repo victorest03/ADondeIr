@@ -29,6 +29,8 @@
             RuleFor(x => x.cEmpresa).NotEmpty().WithMessage("Ingrese un nombre para la Empresa!!!")
                 .Matches(@"^(?=.*\S).*$").WithMessage("Ingrese un nombre de Empresa valida!!!");
 
+            RuleFor(x => x.cDireccion).Matches(@"^(?=.*\S).*$").WithMessage("Ingrese una direccion de Empresa valida!!!");
+
             RuleFor(x => x.cTelefono).Matches(@"^([+]\d{3} )?\d{7,9}").WithMessage("Ingrese un Teléfono valido!!!");
         }
     }

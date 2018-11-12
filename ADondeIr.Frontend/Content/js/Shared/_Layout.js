@@ -80,15 +80,22 @@ $(function () {
     $.ajaxSetup({ cache: false });
 
 });
-function invocarModal(url, onSuccess) {
+
+function invocarModal(url, onHiddenModal) {
     $.ajax({
         url: url,
         type: "GET",
         dataType: "html",
         cache: false,
         success: function (data) {
-            $("body").append(data);
-            if (onSuccess) onSuccess(data);
+            const $modal = $("<div class='parent'>").append(data);
+            $modal.find(">.modal").on("hidden.bs.modal", function() {
+                $(this).parent().remove();
+                if (onHiddenModal) onHiddenModal();
+            });
+            $modal.find(">.modal").modal("show");
+
+            $("body").append($modal);
         },
         beforeSend: function () {
             $("#loading").show();
@@ -98,49 +105,65 @@ function invocarModal(url, onSuccess) {
         }
     });
 }
-function actionAjax(url, data, type, messageSuccess, onSuccess, message) {
+
+function onSuccessForm(data, $form, $modal) {
+    $form.find("span[data-valmsg-for]").text("");
+    if (data.Success === true) {
+        swal("Bien!", "Registro Guardado Correctamente", "success");
+        if ($modal) $modal.modal("hide");
+    } else {
+        if (data.Errors) {
+            $.each(data.Errors,
+                function (i, item) {
+                    if ($form.find("span[data-valmsg-for=" + item.Key + "]").length !== 0)
+                        $form.find("span[data-valmsg-for=" + item.Key + "]").text(item.Message);
+                });
+        }
+        swal("Algo Salio Mal!", data.Message ? data.Message : "Verifique los campos ingresados", "error");
+    }
+}
+
+function onFailureForm() {
+     swal("Algo Salio Mal!", "Ocurrio un error al Guardar22", "error");
+}
+
+function confirmAjax(url, parameters, type, msg, msgSuccess, onSuccess) {
     swal({
-        title: "Confirmacion",
-        text: message ? message : "Esta Seguro ??",
-        type: "warning",
-        showCancelButton: true,
-        closeOnConfirm: false,
-        showLoaderOnConfirm: true
-    },
+            title: "Confirmacion",
+            text: msg ? msg : "Esta Seguro ??",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        },
         function () {
-            $.ajax({
-                url: url,
-                data: data,
-                type: type,
-                cache: false,
-                success: function (data) {
-                    if (data.Success === true) {
-                        swal("Bien!", messageSuccess ? messageSuccess : "Proceso realizado Correctamente", "success");
-                        if (onSuccess) onSuccess(data);
-                    } else {
-                        swal("Algo Salio Mal!", data.Message, "error");
-                    }
-                }
-            });
+            actionAjax(url, parameters, type, onSuccess, true, msgSuccess);
         });
 }
-function getAjax(url, parameters, onSuccess) {
+
+function actionAjax(url, parameters, type, onSuccess, isToConfirm, msgSuccess) {
     $.ajax({
         url: url,
-        type: "GET",
         data: parameters,
+        type: type,
         cache: false,
         success: function (data) {
-            if (onSuccess) onSuccess(data);
+            if (data.Success === true) {
+                if (isToConfirm === true) swal("Bien!", msgSuccess ? msgSuccess : "Proceso realizado Correctamente", "success");
+                if (onSuccess) onSuccess(data);
+            } else {
+                if (isToConfirm === true) swal("Algo Salio Mal!", data.Message, "error");
+            }
         },
         beforeSend: function () {
-            $("#loading").show();
+            if (isToConfirm !== true) $("#loading").show();
         },
         complete: function () {
-            $("#loading").hide();
+            if (isToConfirm !== true) $("#loading").hide();
         }
     });
 }
+
 function createModal(title, body, onHidden) {
     const template = `<div id="myModal" class="modal fade" role="dialog">
                       <div class="modal-dialog">

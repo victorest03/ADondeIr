@@ -28,5 +28,11 @@
     "inputFiles": [
       "Content/js/Empresa/_Mantenimiento.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/dataTables.config.min.js",
+    "inputFiles": [
+      "Content/js/dataTables.config.js"
+    ]
   }
 ]
