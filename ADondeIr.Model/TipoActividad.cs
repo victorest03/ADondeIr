@@ -1,5 +1,6 @@
 ﻿namespace ADondeIr.Model
 {
+    using System.ComponentModel.DataAnnotations;
     using FluentValidation;
     using FluentValidation.Attributes;
     using NPoco;
@@ -10,6 +11,7 @@
     {
         public int pkTipoActividad { get; set; }
 
+        [Display(Name = "Tipo de Actividad")]
         public string cTipoActividad { get; set; }
     }
 

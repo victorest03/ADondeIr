@@ -7,6 +7,7 @@
     using Model;
     using System.Web.Mvc;
 
+    [Autenticado(IsAdmin = true)]
     public class EmpresaController : BaseController
     {
         private readonly EmpresaBl _bl = new EmpresaBl();

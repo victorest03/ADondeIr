@@ -40,5 +40,11 @@
     "inputFiles": [
       "Content/js/TipoActividad/_Mantenimiento.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/TipoActividad/Index.min.js",
+    "inputFiles": [
+      "Content/js/TipoActividad/Index.js"
+    ]
   }
 ]

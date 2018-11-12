@@ -7,6 +7,7 @@
     using Common.Session;
     using Model;
 
+    [Autenticado(IsAdmin = true)]
     public class TipoActividadController : BaseController
     {
         private readonly TipoActividadBl _bl = new TipoActividadBl();
@@ -14,6 +15,11 @@
         public ActionResult Index()
         {
             return View();
+        }
+
+        public JsonResult Listado()
+        {
+            return Json(new { data = _bl.GetAll() }, JsonRequestBehavior.AllowGet);
         }
 
         public PartialViewResult PartialMantenimiento(int id = 0)
@@ -44,6 +50,11 @@
                 result = new Result { Errors = ModelState.AllErrors() };
             }
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Delete(int id)
+        {
+            return Json(_bl.Delete(id, GetUser<Usuario>().pkUsuario), JsonRequestBehavior.AllowGet);
         }
     }
 }

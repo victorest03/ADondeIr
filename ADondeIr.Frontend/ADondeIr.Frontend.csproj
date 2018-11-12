@@ -194,6 +194,9 @@
       <DependentUpon>_Layout.js</DependentUpon>
     </Content>
     <Content Include="Content\js\TipoActividad\Index.js" />
+    <Content Include="Content\js\TipoActividad\Index.min.js">
+      <DependentUpon>Index.js</DependentUpon>
+    </Content>
     <Content Include="Content\js\TipoActividad\_Mantenimiento.js" />
     <Content Include="Content\js\TipoActividad\_Mantenimiento.min.js">
       <DependentUpon>_Mantenimiento.js</DependentUpon>
