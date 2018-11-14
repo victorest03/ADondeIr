@@ -68,8 +68,8 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
@@ -189,6 +189,11 @@
     <Content Include="Content\js\Empresa\_Mantenimiento.min.js">
       <DependentUpon>_Mantenimiento.js</DependentUpon>
     </Content>
+    <Content Include="Content\js\Producto\Index.js" />
+    <Content Include="Content\js\Producto\Index.min.js">
+      <DependentUpon>Index.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Producto\_Mantenimiento.js" />
     <Content Include="Content\js\Shared\_Layout.js" />
     <Content Include="Content\js\Shared\_Layout.min.js">
       <DependentUpon>_Layout.js</DependentUpon>
@@ -754,6 +759,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\TipoActividadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -980,6 +986,8 @@
     <Content Include="Views\Empresa\_Mantenimiento.cshtml" />
     <Content Include="Views\TipoActividad\Index.cshtml" />
     <Content Include="Views\TipoActividad\_Mantenimiento.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Producto\_Mantenimiento.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

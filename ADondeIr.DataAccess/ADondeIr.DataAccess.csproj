@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmpresaDa.cs" />
+    <Compile Include="FotoDa.cs" />
+    <Compile Include="ProductoDa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DbContext.cs" />
     <Compile Include="Repository\Repository.cs" />

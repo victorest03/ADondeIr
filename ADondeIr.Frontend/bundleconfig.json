@@ -46,5 +46,11 @@
     "inputFiles": [
       "Content/js/TipoActividad/Index.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/Producto/Index.min.js",
+    "inputFiles": [
+      "Content/js/Producto/Index.js"
+    ]
   }
 ]

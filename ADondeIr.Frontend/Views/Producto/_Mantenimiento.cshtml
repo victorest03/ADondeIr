@@ -1,0 +1,36 @@
+﻿
+@using System.Web.Optimization
+@model ADondeIr.Model.Producto
+<div class="modal fade" id="modalProductoMant" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">@(Model.pkProducto != 0 ? "Modificar" : "Registrar") Datos de Producto</h4>
+            </div>
+            @using (Ajax.BeginForm("Mantenimiento", "Producto", null, new AjaxOptions() { OnSuccess = "OnSuccessProducto", OnFailure = "OnFailureProducto", Confirm = "Esta Seguro?", LoadingElementId = "Loading" }, new { id = "frmProductoMant", @class = "form-horizontal" }))
+            {
+                <div class="modal-body">
+                    @Html.HiddenFor(model => model.pkProducto)
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cProducto)
+                            @Html.EditorFor(model => model.cProducto, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cProducto, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary pull-right" id="btnGuardar">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/Validation")
+<script src="~/Content/plugins/select2/js/select2.js"></script>
+<script src="~/Content/js/Producto/_Mantenimiento.min.js?v=@DateTime.Now.Ticks.ToString()"></script>

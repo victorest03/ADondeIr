@@ -1,19 +1,20 @@
 ﻿try {
     window.addEventListener("submit", function (e) {
-        var form = e.target;
+        const form = e.target;
         if (form.getAttribute("enctype") === "multipart/form-data") {
             if (form.dataset.ajax) {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                var xhr = new XMLHttpRequest();
+                const xhr = new XMLHttpRequest();
                 xhr.open(form.method, form.action);
 
                 xhr.addEventListener("loadend", function () {
-                    if (form.getAttribute("data-ajax-loading") != null && form.getAttribute("data-ajax-loading") != "")
+                    if (form.getAttribute("data-ajax-loading") != null && form.getAttribute("data-ajax-loading") !== "")
                         document.getElementById(form.getAttribute("data-ajax-loading").substr(1)).style.display = "none";
 
-                    if (form.getAttribute("data-ajax-complete") != null && form.getAttribute("data-ajax-complete") != "")
-                        window[form.getAttribute("data-ajax-complete")]
+                    if (form.getAttribute("data-ajax-complete") != null &&
+                        form.getAttribute("data-ajax-complete") !== "")
+                        window[form.getAttribute("data-ajax-complete")].apply(this, []);;
                 });
 
                 xhr.onreadystatechange = function () {
@@ -21,17 +22,36 @@
                         if (xhr.status === 200)
                             window[form.getAttribute("data-ajax-success")].apply(this, [JSON.parse(xhr.responseText)]);
                         else
-                            window[form.getAttribute("data-ajax-failure")].apply(this, [JSON.parse(xhr.responseText), xhr.status]);
+                            window[form.getAttribute("data-ajax-failure")].apply(this, [xhr.status]);
                     }
                 };
 
-                if (form.getAttribute("data-ajax-loading") != null && form.getAttribute("data-ajax-loading") != "")
-                    document.getElementById(form.getAttribute("data-ajax-loading").substr(1)).style.display = "block";
+                const confirm = form.getAttribute("data-ajax-confirm");
 
-                if (form.getAttribute("data-ajax-begin") != null && form.getAttribute("data-ajax-begin") != "")
-                    window[form.getAttribute("data-ajax-begin")]
+                if (confirm) {
+                    swal({
+                        title: "Confirmacion",
+                        text: confirm,
+                        type: "info",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        showLoaderOnConfirm: true
+                    },
+                        function () {
+                            if (form.getAttribute("data-ajax-begin") != null && form.getAttribute("data-ajax-begin") !== "")
+                                window[form.getAttribute("data-ajax-begin")].apply(this, []);
 
-                xhr.send(new FormData(form));
+                            xhr.send(new FormData(form));
+                        });
+                } else {
+                    if (form.getAttribute("data-ajax-loading") != null && form.getAttribute("data-ajax-loading") !== "")
+                        document.getElementById(form.getAttribute("data-ajax-loading").substr(1)).style.display = "block";
+
+                    if (form.getAttribute("data-ajax-begin") != null && form.getAttribute("data-ajax-begin") !== "")
+                        window[form.getAttribute("data-ajax-begin")].apply(this, []);
+
+                    xhr.send(new FormData(form));
+                }
             }
         }
     }, true);

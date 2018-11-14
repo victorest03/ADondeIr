@@ -24,7 +24,6 @@
 
                     var query = db.Query<TEntity>();
                     action?.Invoke(query);
-
                     if (expression != null) query.Where(expression);
 
                     result = query.ToList();
