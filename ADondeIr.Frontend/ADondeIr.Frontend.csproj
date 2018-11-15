@@ -194,6 +194,9 @@
       <DependentUpon>Index.js</DependentUpon>
     </Content>
     <Content Include="Content\js\Producto\_Mantenimiento.js" />
+    <Content Include="Content\js\Producto\_Mantenimiento.min.js">
+      <DependentUpon>_Mantenimiento.js</DependentUpon>
+    </Content>
     <Content Include="Content\js\Shared\_Layout.js" />
     <Content Include="Content\js\Shared\_Layout.min.js">
       <DependentUpon>_Layout.js</DependentUpon>
@@ -206,6 +209,50 @@
     <Content Include="Content\js\TipoActividad\_Mantenimiento.min.js">
       <DependentUpon>_Mantenimiento.js</DependentUpon>
     </Content>
+    <Content Include="Content\plugins\Boostrap-fileinput\css\fileinput.css" />
+    <Content Include="Content\plugins\Boostrap-fileinput\css\fileinput.min.css" />
+    <Content Include="Content\plugins\Boostrap-fileinput\fileinput.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\fileinput.min.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\img\loading-sm.gif" />
+    <Content Include="Content\plugins\Boostrap-fileinput\img\loading.gif" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\ar.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\bg.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\ca.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\cr.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\cz.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\da.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\de.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\el.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\es.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\fa.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\fi.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\fr.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\hu.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\id.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\it.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\ja.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\kr.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\kz.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\LANG.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\nl.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\pl.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\pt-BR.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\pt.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\ro.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\ru.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\sk.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\sl.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\sv.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\th.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\tr.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\uk.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\vi.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\zh-TW.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\locales\zh.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\themes\explorer\theme.css" />
+    <Content Include="Content\plugins\Boostrap-fileinput\themes\explorer\theme.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\themes\fa\theme.js" />
+    <Content Include="Content\plugins\Boostrap-fileinput\themes\gly\theme.js" />
     <Content Include="Content\plugins\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Content\plugins\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="Content\plugins\bootstrap\dist\css\bootstrap.css" />
@@ -594,44 +641,6 @@
     <Content Include="Content\plugins\jquery\src\var\support.js" />
     <Content Include="Content\plugins\jquery\src\var\toString.js" />
     <Content Include="Content\plugins\jquery\src\wrap.js" />
-    <Content Include="Content\plugins\JsTree\extensions\intro.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.changed.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.checkbox.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.conditionalselect.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.contextmenu.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.dnd.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.massload.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.search.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.sort.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.state.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.types.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.unique.js" />
-    <Content Include="Content\plugins\JsTree\extensions\jstree.wholerow.js" />
-    <Content Include="Content\plugins\JsTree\extensions\misc.js" />
-    <Content Include="Content\plugins\JsTree\extensions\outro.js" />
-    <Content Include="Content\plugins\JsTree\extensions\sample.js" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default-dark\32px.png" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default-dark\40px.png" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default-dark\style.css" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default-dark\throbber.gif" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default\32px.png" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default\40px.png" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default\style.css" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default\throbber.gif" />
-    <Content Include="Content\plugins\JsTree\extensions\vakata-jstree.js" />
-    <Content Include="Content\plugins\JsTree\jstree.js" />
-    <Content Include="Content\plugins\JsTree\jstree.min.js" />
-    <Content Include="Content\plugins\JsTree\themes\default-dark\32px.png" />
-    <Content Include="Content\plugins\JsTree\themes\default-dark\40px.png" />
-    <Content Include="Content\plugins\JsTree\themes\default-dark\style.css" />
-    <Content Include="Content\plugins\JsTree\themes\default-dark\style.min.css" />
-    <Content Include="Content\plugins\JsTree\themes\default-dark\throbber.gif" />
-    <Content Include="Content\plugins\JsTree\themes\default\32px.png" />
-    <Content Include="Content\plugins\JsTree\themes\default\40px.png" />
-    <Content Include="Content\plugins\JsTree\themes\default\style.css" />
-    <Content Include="Content\plugins\JsTree\themes\default\style.min.css" />
-    <Content Include="Content\plugins\JsTree\themes\default\throbber.gif" />
     <Content Include="Content\plugins\Moment\es.js" />
     <Content Include="Content\plugins\Moment\moment.js" />
     <Content Include="Content\plugins\Moment\moment.min.js" />
@@ -679,19 +688,6 @@
     <Content Include="Content\plugins\mvcFoolProof\mvcfoolproof.unobtrusive.min.js" />
     <Content Include="Content\plugins\mvcFoolProof\MvcFoolproofJQueryValidation.min.js" />
     <Content Include="Content\plugins\mvcFoolProof\MvcFoolproofValidation.min.js" />
-    <Content Include="Content\plugins\raphael\dev\banner.txt" />
-    <Content Include="Content\plugins\raphael\dev\raphael.amd.js" />
-    <Content Include="Content\plugins\raphael\dev\raphael.core.js" />
-    <Content Include="Content\plugins\raphael\dev\raphael.svg.js" />
-    <Content Include="Content\plugins\raphael\dev\raphael.vml.js" />
-    <Content Include="Content\plugins\raphael\dev\test\svg\dom.js" />
-    <Content Include="Content\plugins\raphael\dev\test\vml\dom.js" />
-    <Content Include="Content\plugins\raphael\license.txt" />
-    <Content Include="Content\plugins\raphael\raphael.js" />
-    <Content Include="Content\plugins\raphael\raphael.min.js" />
-    <Content Include="Content\plugins\raphael\raphael.no-deps.js" />
-    <Content Include="Content\plugins\raphael\raphael.no-deps.min.js" />
-    <Content Include="Content\plugins\raphael\webpack.config.js" />
     <Content Include="Content\plugins\select2\css\select2.css" />
     <Content Include="Content\plugins\select2\css\select2.min.css" />
     <Content Include="Content\plugins\select2\js\i18n\ar.js" />
@@ -745,6 +741,60 @@
     <Content Include="Content\plugins\select2\js\select2.full.min.js" />
     <Content Include="Content\plugins\select2\js\select2.js" />
     <Content Include="Content\plugins\select2\js\select2.min.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-ar-AR.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-bg-BG.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-ca-ES.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-da-DK.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-de-DE.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-el-GR.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-es-ES.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-es-EU.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-fa-IR.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-fi-FI.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-fr-FR.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-gl-ES.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-he-IL.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-hr-HR.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-hu-HU.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-id-ID.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-it-IT.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-ja-JP.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-ko-KR.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-lt-LT.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-lt-LV.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-mn-MN.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-nb-NO.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-nl-NL.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-pl-PL.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-pt-BR.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-pt-PT.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-ro-RO.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-ru-RU.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-sk-SK.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-sl-SI.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-sr-RS.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-sv-SE.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-ta-IN.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-th-TH.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-tr-TR.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-uk-UA.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-vi-VN.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-zh-CN.js" />
+    <Content Include="Content\plugins\summernote\lang\summernote-zh-TW.js" />
+    <Content Include="Content\plugins\summernote\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Content\plugins\summernote\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Content\plugins\summernote\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Content\plugins\summernote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Content\plugins\summernote\summernote-bs4.css" />
+    <Content Include="Content\plugins\summernote\summernote-bs4.js" />
+    <Content Include="Content\plugins\summernote\summernote-bs4.min.js" />
+    <Content Include="Content\plugins\summernote\summernote-lite.css" />
+    <Content Include="Content\plugins\summernote\summernote-lite.js" />
+    <Content Include="Content\plugins\summernote\summernote.css" />
+    <Content Include="Content\plugins\summernote\summernote.js" />
+    <Content Include="Content\plugins\summernote\summernote.min.js" />
     <Content Include="Content\plugins\sweetalert\sweetalert-dev.js" />
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\sweetalert\sweetalert.min.css" />
@@ -927,12 +977,6 @@
     <Content Include="Content\plugins\jquery\external\sizzle\dist\sizzle.min.map" />
     <Content Include="Content\plugins\jquery\README.md" />
     <Content Include="Content\plugins\jquery\src\.eslintrc.json" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\base.less" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default-dark\style.less" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\default\style.less" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\main.less" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\mixins.less" />
-    <Content Include="Content\plugins\JsTree\extensions\themes\responsive.less" />
     <Content Include="Content\plugins\morris.js\.bower.json" />
     <Content Include="Content\plugins\morris.js\.gitignore" />
     <Content Include="Content\plugins\morris.js\.travis.yml" />
@@ -963,9 +1007,6 @@
     <Content Include="Content\plugins\morris.js\spec\lib\parse_time_spec.coffee" />
     <Content Include="Content\plugins\morris.js\spec\support\placeholder.coffee" />
     <Content Include="Content\plugins\morris.js\spec\viz\run.sh" />
-    <Content Include="Content\plugins\raphael\.bower.json" />
-    <Content Include="Content\plugins\raphael\bower.json" />
-    <Content Include="Content\plugins\raphael\yarn.lock" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -975,6 +1016,10 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\plugins\Boostrap-fileinput\sass\fileinput.scss" />
+    <Content Include="Content\plugins\summernote\font\summernote.eot" />
+    <Content Include="Content\plugins\summernote\font\summernote.ttf" />
+    <Content Include="Content\plugins\summernote\font\summernote.woff" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -997,7 +1042,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\plugins\JsTree\JsTree\" />
     <Folder Include="Content\scss\Empresa\" />
   </ItemGroup>
   <ItemGroup>

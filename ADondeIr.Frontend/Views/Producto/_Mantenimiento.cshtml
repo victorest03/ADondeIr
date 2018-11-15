@@ -1,5 +1,4 @@
-﻿
-@using System.Web.Optimization
+﻿@using System.Web.Optimization
 @model ADondeIr.Model.Producto
 <div class="modal fade" id="modalProductoMant" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -20,6 +19,46 @@
                             @Html.EditorFor(model => model.cProducto, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.cProducto, null, new { @class = "label label-danger" })
                         </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.fkTipoActividad, new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.fkTipoActividad, new SelectList(ViewBag.listTipoActividades, "pkTipoActividad", "cTipoActividad"), "--Seleccione Tipo de Actividad--", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.fkTipoActividad, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.fkDistrito, new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.fkDistrito, new SelectList(ViewBag.listDistrito, "pkDistrito", "cDistrito"), "--Seleccione Distrito--", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.fkDistrito, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.fkDistrito, new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.fkDistrito, new SelectList(ViewBag.listDistrito, "pkDistrito", "cDistrito"), "--Seleccione Distrito--", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.fkDistrito, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.LabelFor(model => model.cTags)
+                            @Html.EditorFor(model => model.cTags, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cTags, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.LabelFor(model => model.dPrecio)
+                            @Html.EditorFor(model => model.dPrecio, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.dPrecio, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="control-label">Foto Producto</label>
+                            <input type="file" accept="image/*" id="fotoPrincipal" name="fotoPrincipal" @(!string.IsNullOrWhiteSpace(Model.FotoPrincipal?.cFileName) ? "data-preimagen = " + Model.FotoPrincipal?.cFileName : "") />
+                            @Html.ValidationMessage("ProductoImagen_Error", new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cObservacionPrincipal, new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.cObservacionPrincipal, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.cObservacionPrincipal, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cObservacionGeneral, new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.cObservacionGeneral, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.cObservacionGeneral, null, new { @class = "label label-danger" })
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -33,4 +72,7 @@
 
 @Scripts.Render("~/Scripts/Validation")
 <script src="~/Content/plugins/select2/js/select2.js"></script>
+<script src="~/Content/plugins/Boostrap-fileinput/fileinput.min.js"></script>
+<script src="~/Content/plugins/summernote/summernote.js"></script>
+<script src="~/Content/plugins/summernote/lang/summernote-es-ES.js"></script>
 <script src="~/Content/js/Producto/_Mantenimiento.min.js?v=@DateTime.Now.Ticks.ToString()"></script>

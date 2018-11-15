@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistritoBl.cs" />
     <Compile Include="EmpresaBl.cs" />
     <Compile Include="ProductoBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

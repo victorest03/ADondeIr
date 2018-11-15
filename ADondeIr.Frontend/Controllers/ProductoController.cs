@@ -1,12 +1,13 @@
 ﻿namespace ADondeIr.Frontend.Controllers
 {
-    using System.Web;
-    using System.Web.Mvc;
     using BusinessLogic;
     using Common.Extensions;
+    using Common.Methods;
     using Common.Model;
     using Common.Session;
     using Model;
+    using System.Web;
+    using System.Web.Mvc;
 
     public class ProductoController : BaseController
     {
@@ -25,6 +26,8 @@
         public PartialViewResult PartialMantenimiento(int id = 0)
         {
             Producto model = null;
+            ViewBag.listTipoActividades = new TipoActividadBl().GetAll();
+            ViewBag.listDistrito = new DistritoBl().GetAll();
             if (id != 0) model = _bl.Get(id);
             return PartialView("_Mantenimiento", model ?? new Producto());
         }
@@ -38,8 +41,12 @@
             }
             if (ModelState.IsValid)
             {
-                //if (fotoPrincipal != null)
-                //    model.cFileName = fotoPrincipal.SaveFileInAzure("mpol", "Producto", true);
+                if (fotoPrincipal != null)
+                {
+                    model.FotoPrincipal = model.FotoPrincipal ?? new Foto();
+                    model.FotoPrincipal.cFileName = fotoPrincipal.GenerateNameFile();
+                    StorageAzureHelper.Save("producto", model.FotoPrincipal.cFileName, fotoPrincipal.InputStream);
+                }
                 if (model.pkProducto != 0)
                 {
                     model.fkUsuarioEdita = GetUser<Usuario>().pkUsuario;
@@ -49,7 +56,6 @@
                     model.fkUsuarioCrea = GetUser<Usuario>().pkUsuario;
                 }
                 result = _bl.Save(model);
-
             }
             else
             {
@@ -61,6 +67,12 @@
         public JsonResult Delete(int id)
         {
             return Json(_bl.Delete(id, GetUser<Usuario>().pkUsuario), JsonRequestBehavior.AllowGet);
+        }
+
+        public FileResult Foto(string id)
+        {
+            var stream = StorageAzureHelper.Get("producto", id, out var contentType);
+            return File(stream, contentType);
         }
     }
 }
