@@ -1,0 +1,277 @@
+﻿@using System.Web.Optimization
+@using ADondeIr.Common.Session
+@using ADondeIr.Model
+@model ADondeIr.Model.Login
+@{
+    var usuario = (Usuario)SessionHelper.GetUser();
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A Donde Ir - Buscar el lugar que visitaras en tu tiempo libre.">
+    <meta name="author" content="Studio51pe">
+    <title>A Donde Ir @(ViewBag.Title != null ? $"| {ViewBag.Title}" : "")</title>
+
+    <!-- Favicons-->
+    <link rel="icon" href="~/Content/image/icon.png" type="image/png">
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="~/Content/sparker/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/sparker/css/style.css" rel="stylesheet">
+    <link href="~/Content/sparker/css/vendors.css" rel="stylesheet">
+
+    <link href="~/Content/css/Shared/_Layout.min.css?v=@DateTime.Now.Ticks.ToString()" rel="stylesheet" />
+
+    @RenderSection("styles", false)
+</head>
+
+<body>
+    <div id="page">
+        <header class="header menu_fixed">
+            <div id="logo">
+                <a href="/Home" title="Sparker - Directory and listings template">
+                    <img src="~/Content/image/logo.png" width="165" height="35" alt="" class="logo_normal">
+                    <img src="~/Content/image/logo_sticky.png" width="165" height="35" alt="" class="logo_sticky">
+                </a>
+            </div>
+            <ul id="top_menu">
+                <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+                @*<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>*@
+            </ul>
+            <!-- /top_menu -->
+            <a href="#menu" class="btn_mobile">
+                <div class="hamburger hamburger--spin" id="hamburger">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
+            </a>
+            <nav id="menu" class="main-menu">
+                <ul>
+                    <li>
+                        <span><a href="/Home">Inicio</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/Producto/Buscar">Buscar</a></span>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- /header -->
+
+        <main class="pattern">
+            @RenderBody()
+        </main>
+        <!-- /main -->
+
+        <footer class="plus_border">
+            <div class="container margin_60_35">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <a data-toggle="collapse" data-target="#collapse_ft_1" aria-expanded="false" aria-controls="collapse_ft_1" class="collapse_bt_mobile">
+                            <h3>Quick Links</h3>
+                            <div class="circle-plus closed">
+                                <div class="horizontal"></div>
+                                <div class="vertical"></div>
+                            </div>
+                        </a>
+                        <div class="collapse show" id="collapse_ft_1">
+                            <ul class="links">
+                                <li><a href="#0">About us</a></li>
+                                <li><a href="#0">Faq</a></li>
+                                <li><a href="#0">Help</a></li>
+                                <li><a href="#0">My account</a></li>
+                                <li><a href="#0">Create account</a></li>
+                                <li><a href="#0">Contacts</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <a data-toggle="collapse" data-target="#collapse_ft_2" aria-expanded="false" aria-controls="collapse_ft_2" class="collapse_bt_mobile">
+                            <h3>Categories</h3>
+                            <div class="circle-plus closed">
+                                <div class="horizontal"></div>
+                                <div class="vertical"></div>
+                            </div>
+                        </a>
+                        <div class="collapse show" id="collapse_ft_2">
+                            <ul class="links">
+                                <li><a href="#0">Shops</a></li>
+                                <li><a href="#0">Hotels</a></li>
+                                <li><a href="#0">Restaurants</a></li>
+                                <li><a href="#0">Bars</a></li>
+                                <li><a href="#0">Events</a></li>
+                                <li><a href="#0">Fitness</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <a data-toggle="collapse" data-target="#collapse_ft_3" aria-expanded="false" aria-controls="collapse_ft_3" class="collapse_bt_mobile">
+                            <h3>Contacts</h3>
+                            <div class="circle-plus closed">
+                                <div class="horizontal"></div>
+                                <div class="vertical"></div>
+                            </div>
+                        </a>
+                        <div class="collapse show" id="collapse_ft_3">
+                            <ul class="contacts">
+                                <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
+                                <li><i class="ti-headphone-alt"></i>+ 61 23 8093 3400</li>
+                                <li><i class="ti-email"></i><a href="#0">info@sparker.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <a data-toggle="collapse" data-target="#collapse_ft_4" aria-expanded="false" aria-controls="collapse_ft_4" class="collapse_bt_mobile">
+                            <div class="circle-plus closed">
+                                <div class="horizontal"></div>
+                                <div class="vertical"></div>
+                            </div>
+                            <h3>Keep in touch</h3>
+                        </a>
+                        <div class="collapse show" id="collapse_ft_4">
+                            <div id="newsletter">
+                                <div id="message-newsletter"></div>
+                                <form method="post" action="#" name="newsletter_form" id="newsletter_form">
+                                    <div class="form-group">
+                                        <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Tu email">
+                                        <input type="submit" value="Submit" id="submit-newsletter">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="follow_us">
+                                <h5>Follow Us</h5>
+                                <ul>
+                                    <li><a href="#0"><i class="ti-facebook"></i></a></li>
+                                    <li><a href="#0"><i class="ti-twitter-alt"></i></a></li>
+                                    <li><a href="#0"><i class="ti-google"></i></a></li>
+                                    <li><a href="#0"><i class="ti-pinterest"></i></a></li>
+                                    <li><a href="#0"><i class="ti-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /row-->
+                <hr>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul id="additional_links">
+                            <li><a href="#0">Terminos y Condiciones</a></li>
+                            <li><a href="#0">Privacidad</a></li>
+                            <li><span>© @DateTime.Now.Year A Donde Ir</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--/footer-->
+    </div>
+    <!-- page -->
+    <!-- Sign In Popup -->
+    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+        <div class="small-dialog-header">
+            <h3 id="sign-in-title">Iniciar sesión</h3>
+        </div>
+        <div id="login" class="sign-in-wrapper">
+            @using (Html.BeginForm("Index","Login", null, FormMethod.Post, new { id = "frmLogin" }))
+            {
+                <div class="form-group">
+                    <label>Email</label>
+                    @Html.EditorFor(model => model.cEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                    <i class="icon_mail_alt"></i>
+                    @Html.ValidationMessageFor(model => model.cEmail, null, new { @class = "label label-danger" })
+                </div>
+                <div class="form-group">
+                    <label>Constraseña</label>
+                    @Html.PasswordFor(model => model.cPassword, new { @class = "form-control", @placeholder = "Contraseña" })
+                    <i class="icon_lock_alt"></i>
+                </div>
+                <div class="clearfix add_bottom_15">
+                    <div class="checkboxes float-left">
+                        <label class="container_check">
+                            Recuérdame
+                            @Html.CheckBoxFor(model => model.isRememberMe)
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">¿Se te olvidó tu contraseña?</a></div>
+                </div>
+                <div class="col-xs-12 text-center">
+                    @Html.ValidationMessage("ErrorSesion", new { @class = "label label-danger" })
+                </div>
+                <div class="text-center"><input type="submit" value="Iniciar" class="btn_1 full-width"></div>
+                <div class="text-center">
+                    ¿No tienes una cuenta? <a id="register" href="javascript:void(0);">Regístrate</a>
+                </div>
+            }
+        </div>
+        <div id="forgot_pw">
+            <div class="form-group">
+                <label>Por favor confirme el correo electrónico de acceso a continuación</label>
+                <input type="email" class="form-control" name="email_forgot" id="email_forgot">
+                <i class="icon_mail_alt"></i>
+            </div>
+            <p>Recibirá un correo electrónico con un enlace que le permitirá restablecer su contraseña a una nueva preferida.</p>
+            <div class="text-center"><input type="submit" value="Restablecer la contraseña" class="btn_1"></div>
+            <div class="text-center">
+                <a id="forgotReturn" href="javascript:void(0);">Regresar</a>
+            </div>
+        </div>
+        <div id="registerForm">
+            <form autocomplete="off">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input class="form-control" type="text">
+                    <i class="ti-user"></i>
+                </div>
+                <div class="form-group">
+                    <label>Your Last Name</label>
+                    <input class="form-control" type="text">
+                    <i class="ti-user"></i>
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input class="form-control" type="email">
+                    <i class="icon_mail_alt"></i>
+                </div>
+                <div class="form-group">
+                    <label>Your password</label>
+                    <input class="form-control" type="password" id="password1">
+                    <i class="icon_lock_alt"></i>
+                </div>
+                <div class="form-group">
+                    <label>Confirm password</label>
+                    <input class="form-control" type="password" id="password2">
+                    <i class="icon_lock_alt"></i>
+                </div>
+                <div id="pass-info" class="clearfix"></div>
+                <a href="#0" class="btn_1 rounded full-width add_top_30">Register Now!</a>
+                <div class="text-center add_top_10">¿Ya tienes una cuenta? <strong><a id="registerReturn" href="javascript:void(0);">Iniciar sesión</a></strong></div>
+            </form>
+        </div>
+        <!--form -->
+    </div>
+    <!-- /Sign In Popup -->
+
+    <div id="toTop"></div><!-- Back to top button -->
+    <!-- COMMON SCRIPTS -->
+    <script src="~/Content/sparker/js/common_scripts.js"></script>
+    <script src="~/Content/sparker/js/functions.js"></script>
+
+    <!-- SPECIFIC SCRIPTS -->
+    <script src="~/Content/sparker/js/animated_canvas_min.js"></script>
+    @Scripts.Render("~/Scripts/Validation")
+    <!-- Layout Js -->
+    <script src="~/Content/js/Shared/_Layout.min.js?v=@DateTime.Now.Ticks.ToString()"></script>
+    <!-- Section Scripts -->
+    @RenderSection("scripts", false)
+</body>
+</html>

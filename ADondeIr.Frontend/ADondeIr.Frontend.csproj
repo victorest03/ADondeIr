@@ -175,6 +175,14 @@
     <Content Include="Content\css\Shared\_Layout.min.css">
       <DependentUpon>_Layout.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Shared\_LayoutAdmin.css" />
+    <Content Include="Content\css\Shared\_LayoutAdmin.min.css">
+      <DependentUpon>_LayoutAdmin.css</DependentUpon>
+    </Content>
+    <Content Include="Content\image\home_section_1.jpg" />
+    <Content Include="Content\image\icon.png" />
+    <Content Include="Content\image\logo.png" />
+    <Content Include="Content\image\logo_sticky.png" />
     <Content Include="Content\image\user-default-blanco.png" />
     <Content Include="Content\image\user-default.png" />
     <Content Include="Content\js\bootstrap-datepicker.config.js" />
@@ -199,8 +207,12 @@
       <DependentUpon>_Mantenimiento.js</DependentUpon>
     </Content>
     <Content Include="Content\js\Shared\_Layout.js" />
+    <Content Include="Content\js\Shared\_LayoutAdmin.js" />
     <Content Include="Content\js\Shared\_Layout.min.js">
       <DependentUpon>_Layout.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Shared\_LayoutAdmin.min.js">
+      <DependentUpon>_LayoutAdmin.js</DependentUpon>
     </Content>
     <Content Include="Content\js\TipoActividad\Index.js" />
     <Content Include="Content\js\TipoActividad\Index.min.js">
@@ -800,6 +812,24 @@
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\sweetalert\sweetalert.min.css" />
     <Content Include="Content\plugins\sweetalert\sweetalert.min.js" />
+    <Content Include="Content\sparker\css\blog.css" />
+    <Content Include="Content\sparker\css\bootstrap.min.css" />
+    <Content Include="Content\sparker\css\custom.css" />
+    <Content Include="Content\sparker\css\style.css" />
+    <Content Include="Content\sparker\css\tables.css" />
+    <Content Include="Content\sparker\css\vendors.css" />
+    <Content Include="Content\sparker\js\animated_canvas_min.js" />
+    <Content Include="Content\sparker\js\common_scripts.js" />
+    <Content Include="Content\sparker\js\functions.js" />
+    <Content Include="Content\sparker\js\mapmarker.jquery.js" />
+    <Content Include="Content\sparker\js\mapmarker_func.jquery.js" />
+    <Content Include="Content\sparker\js\map_single_restaurant.js" />
+    <Content Include="Content\sparker\js\map_single_shop.js" />
+    <Content Include="Content\sparker\js\modernizr.js" />
+    <Content Include="Content\sparker\js\pw_strenght.js" />
+    <Content Include="Content\sparker\js\switcher.js" />
+    <Content Include="Content\sparker\js\tables_func.js" />
+    <Content Include="Content\sparker\js\video_header.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -810,8 +840,10 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\TipoActividadController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1011,7 +1043,7 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\scss\Shared\_Layout.scss" />
+    <Content Include="Content\scss\Shared\_LayoutAdmin.scss" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -1021,6 +1053,12 @@
     <Content Include="Content\plugins\summernote\font\summernote.eot" />
     <Content Include="Content\plugins\summernote\font\summernote.ttf" />
     <Content Include="Content\plugins\summernote\font\summernote.woff" />
+    <Content Include="Content\sparker\css\icon_fonts\font\ElegantIcons.woff" />
+    <Content Include="Content\sparker\css\icon_fonts\font\fontello.woff" />
+    <Content Include="Content\sparker\css\icon_fonts\font\Glyphter.woff" />
+    <Content Include="Content\sparker\css\icon_fonts\font\Pe-icon-7-stroke.woff" />
+    <Content Include="Content\sparker\css\icon_fonts\font\themify.woff" />
+    <Content Include="Content\scss\Shared\_Layout.scss" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1034,6 +1072,10 @@
     <Content Include="Views\TipoActividad\_Mantenimiento.cshtml" />
     <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Producto\_Mantenimiento.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\_Mantenimiento.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

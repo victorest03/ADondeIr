@@ -58,5 +58,17 @@
     "inputFiles": [
       "Content/js/Producto/_Mantenimiento.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/Shared/_LayoutAdmin.min.js",
+    "inputFiles": [
+      "Content/js/Shared/_LayoutAdmin.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/js/Usuario/_Mantenimiento.min.js",
+    "inputFiles": [
+      "Content/js/Usuario/_Mantenimiento.js"
+    ]
   }
 ]

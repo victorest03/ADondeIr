@@ -6,6 +6,7 @@
         "ajax": "/TipoActividad/Listado",
         "columns": [
             { data: "cTipoActividad", title: "Descripción" },
+            { data: "cIcon", title: "Icono" },
             {
                 data: null,
                 defaultContent:

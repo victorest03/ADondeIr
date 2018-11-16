@@ -21,7 +21,7 @@
                             ,f.cfileName
                         FROM Producto p
                         INNER JOIN Foto f ON p.fkFotoPrincipal = f.pkFoto
-                        WHERE s.pkProducto = @0", pkProducto);
+                        WHERE p.pkProducto = @0", pkProducto);
                 }
             }
             catch (Exception e)

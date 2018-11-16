@@ -1,0 +1,55 @@
+﻿@using System.Web.Optimization
+@model ADondeIr.Model.Usuario
+<div class="modal fade" id="modalUsuarioMant" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">@(Model.pkUsuario != 0 ? "Modificar" : "Registrar") Datos de Usuario</h4>
+            </div>
+            @using (Ajax.BeginForm("Mantenimiento", "Usuario", null, new AjaxOptions() { OnSuccess = "OnSuccessUsuario", OnFailure = "OnFailureUsuario", Confirm = "Esta Seguro?", LoadingElementId = "Loading" }, new { id = "frmUsuarioMant", @class = "form-horizontal" }))
+            {
+                <div class="modal-body">
+                    @Html.HiddenFor(model => model.pkUsuario)
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cNombres)
+                            @Html.EditorFor(model => model.cNombres, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cNombres, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cApellidos)
+                            @Html.EditorFor(model => model.cApellidos, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cApellidos, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cEmail)
+                            @Html.EditorFor(model => model.cEmail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cEmail, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cPassword)
+                            @Html.EditorFor(model => model.cPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cPassword, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-12 text-right">
+                            <label class="control-label">
+                                @Html.CheckBoxFor(model => model.isAdmin) Administrador
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary pull-right" id="btnGuardar">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/Validation")
+<script src="~/Content/plugins/select2/js/select2.js"></script>
+<script src="~/Content/js/Usuario/_Mantenimiento.min.js?v=@DateTime.Now.Ticks.ToString()"></script>
