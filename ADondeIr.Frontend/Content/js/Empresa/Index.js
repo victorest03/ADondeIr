@@ -7,7 +7,7 @@
         "columns": [
             { data: "cEmpresa", title: "Descripción" },
             { data: "cDireccion", title: "Direccion" },
-            { data: "cDireccion", title: "Teléfono" },
+            { data: "cTelefono", title: "Teléfono" },
             {
                 data: null,
                 defaultContent:

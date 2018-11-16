@@ -2,15 +2,15 @@
 $(function () {
     const $modalProductoMant = $("#modalProductoMant");
     const $frmProductoMant = $("#frmProductoMant");
-    const $fotoPrincipal = $frmProductoMant.find("#fotoPrincipal");
+    const $foto = $frmProductoMant.find("#foto");
     const $ObservacionGeneral = $frmProductoMant.find("#cObservacionGeneral");
 
     OnSuccessProducto = (data) => onSuccessForm(data, $frmProductoMant, $modalProductoMant);
     onFailureProducto = () => onFailureForm();
 
-    $frmProductoMant.find(".dPrecio").inputmask("currency", { prefix: "S/ ", removeMaskOnSubmit: true, autoUnmask: true });
+    $frmProductoMant.find("#dPrecio").inputmask("currency", { prefix: "S/ ", removeMaskOnSubmit: true, autoUnmask: true });
 
-    $fotoPrincipal.fileinput({
+    $foto.fileinput({
         showRemove: false,
         browseClass: "btn btn-primary btn-block",
         showUpload: false,
@@ -24,18 +24,20 @@ $(function () {
         }).on("fileerror",
         function (data) {
             swal("Algo Salio Mal!", data.MessageError, "error");
-            $fotoPrincipal.fileinput("clear");
+            $foto.fileinput("clear");
         });
 
-    if ($fotoPrincipal.attr("data-preimagen")) {
-        $fotoPrincipal.fileinput("refresh", {
+    if ($foto.attr("data-preimagen")) {
+        $foto.fileinput("refresh", {
             initialPreview: [
-                `/Producto/Foto/${$fotoPrincipal.attr("data-preimagen")}`
+                `/Producto/Foto/${$foto.attr("data-preimagen")}`
             ],
             initialPreviewAsData: true
         });
-        $fotoPrincipal.fileinput("disable");
+        $foto.fileinput("disable");
     }
+
+    $frmProductoMant.data("validator").settings.ignore = ".note-editor *";
 
     $ObservacionGeneral.summernote({
         lang: "es-ES",

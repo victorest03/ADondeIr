@@ -1,5 +1,7 @@
 ﻿@using System.Web.Optimization
 @model ADondeIr.Model.Producto
+<link href="~/Content/plugins/Boostrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+<link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet" />
 <div class="modal fade" id="modalProductoMant" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -9,11 +11,16 @@
                 </button>
                 <h4 class="modal-title">@(Model.pkProducto != 0 ? "Modificar" : "Registrar") Datos de Producto</h4>
             </div>
-            @using (Ajax.BeginForm("Mantenimiento", "Producto", null, new AjaxOptions() { OnSuccess = "OnSuccessProducto", OnFailure = "OnFailureProducto", Confirm = "Esta Seguro?", LoadingElementId = "Loading" }, new { id = "frmProductoMant", @class = "form-horizontal" }))
+            @using (Ajax.BeginForm("Mantenimiento", "Producto", null, new AjaxOptions() { OnSuccess = "OnSuccessProducto", OnFailure = "OnFailureProducto", Confirm = "Esta Seguro?", LoadingElementId = "Loading" }, new { id = "frmProductoMant", @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 <div class="modal-body">
                     @Html.HiddenFor(model => model.pkProducto)
                     <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.fkEmpresa, new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.fkEmpresa, new SelectList(ViewBag.listEmpresa, "pkEmpresa", "cEmpresa"), "--Seleccione Empresa--", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.fkEmpresa, null, new { @class = "label label-danger" })
+                        </div>
                         <div class="col-sm-12">
                             @Html.LabelFor(model => model.cProducto)
                             @Html.EditorFor(model => model.cProducto, new { htmlAttributes = new { @class = "form-control" } })
@@ -29,11 +36,6 @@
                             @Html.DropDownListFor(model => model.fkDistrito, new SelectList(ViewBag.listDistrito, "pkDistrito", "cDistrito"), "--Seleccione Distrito--", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.fkDistrito, null, new { @class = "label label-danger" })
                         </div>
-                        <div class="col-sm-6">
-                            @Html.LabelFor(model => model.fkDistrito, new { @class = "control-label" })
-                            @Html.DropDownListFor(model => model.fkDistrito, new SelectList(ViewBag.listDistrito, "pkDistrito", "cDistrito"), "--Seleccione Distrito--", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.fkDistrito, null, new { @class = "label label-danger" })
-                        </div>
                         <div class="col-sm-8">
                             @Html.LabelFor(model => model.cTags)
                             @Html.EditorFor(model => model.cTags, new { htmlAttributes = new { @class = "form-control" } })
@@ -41,17 +43,17 @@
                         </div>
                         <div class="col-sm-4">
                             @Html.LabelFor(model => model.dPrecio)
-                            @Html.EditorFor(model => model.dPrecio, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.dPrecio, new { htmlAttributes = new { @class = "form-control", type = "text" } })
                             @Html.ValidationMessageFor(model => model.dPrecio, null, new { @class = "label label-danger" })
                         </div>
                         <div class="col-sm-12">
                             <label class="control-label">Foto Producto</label>
-                            <input type="file" accept="image/*" id="fotoPrincipal" name="fotoPrincipal" @(!string.IsNullOrWhiteSpace(Model.FotoPrincipal?.cFileName) ? "data-preimagen = " + Model.FotoPrincipal?.cFileName : "") />
+                            <input type="file" accept="image/*" id="foto" name="foto" @(!string.IsNullOrWhiteSpace(Model.FotoPrincipal?.cFileName) ? "data-preimagen = " + Model.FotoPrincipal?.cFileName : "") />
                             @Html.ValidationMessage("ProductoImagen_Error", new { @class = "label label-danger" })
                         </div>
                         <div class="col-sm-12">
                             @Html.LabelFor(model => model.cObservacionPrincipal, new { @class = "control-label" })
-                            @Html.TextAreaFor(model => model.cObservacionPrincipal, new { @class = "form-control" })
+                            @Html.EditorFor(model => model.cObservacionPrincipal, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.cObservacionPrincipal, null, new { @class = "label label-danger" })
                         </div>
                         <div class="col-sm-12">

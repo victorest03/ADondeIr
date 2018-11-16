@@ -8,6 +8,7 @@
     using Model;
     using System.Web;
     using System.Web.Mvc;
+    using Common.Attributes.ActionFilter;
 
     public class ProductoController : BaseController
     {
@@ -18,6 +19,7 @@
             return View();
         }
 
+        [JsonResultCustom]
         public JsonResult Listado()
         {
             return Json(new { data = _bl.GetAll() }, JsonRequestBehavior.AllowGet);
@@ -26,26 +28,27 @@
         public PartialViewResult PartialMantenimiento(int id = 0)
         {
             Producto model = null;
+            ViewBag.listEmpresa = new EmpresaBl().GetAll();
             ViewBag.listTipoActividades = new TipoActividadBl().GetAll();
             ViewBag.listDistrito = new DistritoBl().GetAll();
             if (id != 0) model = _bl.Get(id);
             return PartialView("_Mantenimiento", model ?? new Producto());
         }
         [HttpPost]
-        public JsonResult Mantenimiento(Producto model, HttpPostedFileBase fotoPrincipal)
+        public JsonResult Mantenimiento(Producto model, HttpPostedFileBase foto)
         {
             Result result;
-            if (fotoPrincipal == null && model.pkProducto == 0)
+            if (foto == null && model.pkProducto == 0)
             {
                 ModelState.AddModelError("ProductoImagen_Error", "Seleccione una Foto Principal!!!");
             }
             if (ModelState.IsValid)
             {
-                if (fotoPrincipal != null)
+                if (foto != null)
                 {
                     model.FotoPrincipal = model.FotoPrincipal ?? new Foto();
-                    model.FotoPrincipal.cFileName = fotoPrincipal.GenerateNameFile();
-                    StorageAzureHelper.Save("producto", model.FotoPrincipal.cFileName, fotoPrincipal.InputStream);
+                    model.FotoPrincipal.cFileName = foto.GenerateNameFile();
+                    StorageAzureHelper.Save("producto", model.FotoPrincipal.cFileName, foto.InputStream);
                 }
                 if (model.pkProducto != 0)
                 {

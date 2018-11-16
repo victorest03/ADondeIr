@@ -17,8 +17,12 @@
 
         [Reference(ReferenceType.OneToOne, ColumnName = "fkTipoActividad", ReferenceMemberName = "pkTipoActividad")]
         public TipoActividad TipoActividad { get; set; }
+
         [Display(Name = "Tipo de Actividad")]
         public int fkTipoActividad { get; set; }
+
+        [Display(Name = "Empresa")]
+        public int fkEmpresa { get; set; }
 
         [Display(Name = "Observacion Principal")]
         public string cObservacionPrincipal { get; set; }
@@ -40,21 +44,27 @@
         public string cTags { get; set; }
 
         [Display(Name = "Precio")]
-        public decimal dPrecio { get; set; }
+        public double dPrecio { get; set; }
     }
 
     public class ProductoValidator : AbstractValidator<Producto>
     {
         public ProductoValidator()
         {
-            RuleFor(x => x.cProducto).NotEmpty().WithMessage("Ingrese un nombre para la Tipo de Actividad!!!")
-                .Matches(@"^(?=.*\S).*$").WithMessage("Ingrese un nombre de Tipo de Actividad valida!!!");
+            RuleFor(x => x.cProducto).NotNull().WithMessage("Ingrese un nombre para el Producto!!!")
+                .Matches(@"^(?=.*\S).*$").WithMessage("Ingrese un nombre de Producto Valido!!!");
 
-            RuleFor(x => x.fkTipoActividad).NotEmpty().WithMessage("Ingrese un nombre para la Tipo de Actividad!!!");
-            RuleFor(x => x.cObservacionPrincipal).NotEmpty().WithMessage("Ingrese una observacion principal!!!");
-            RuleFor(x => x.fkDistrito).NotEmpty().WithMessage("Ingrese un Distrito!!!");
+            RuleFor(x => x.fkEmpresa).NotEmpty().WithMessage("Seleccione una Empresa!!!");
+
+            RuleFor(x => x.fkTipoActividad).NotEmpty().WithMessage("Seleccione un Tipo de Actividad!!!");
+
+            RuleFor(x => x.cObservacionPrincipal).NotNull().WithMessage("Ingrese un Observacion principal!!!");
+
+            RuleFor(x => x.fkDistrito).NotEmpty().WithMessage("Seleccione un Distrito!!!");
+
             RuleFor(x => x.cTags).NotEmpty().WithMessage("Ingrese almenos un Tag!!!");
-            RuleFor(x => x.dPrecio).NotEmpty().WithMessage("Ingrese un precio. Si es gratis ingrese 0.00!!!");
+
+            RuleFor(x => x.dPrecio).NotNull().WithMessage("Ingrese un precio. Si es gratis ingrese 0.00!!!");
         }
     }
 }

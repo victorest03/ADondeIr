@@ -43,14 +43,17 @@
                 using (IDatabase db = DbContext.GetInstance())
                 {
                     db.BeginTransaction();
-
+                    var fotoOld = new FotoDa().GetFotoPrincipal(entity.pkProducto);
                     if (columns == null || columns.Contains("fkFotoPrincipal"))
                     {
                         if (entity.FotoPrincipal != null)
                         {
-                            var fotoOld = new FotoDa().GetFotoPrincipal(entity.pkProducto);
                             entity.FotoPrincipal.pkFoto = fotoOld.pkFoto;
                             db.Update(entity.FotoPrincipal);
+                        }
+                        else
+                        {
+                            entity.FotoPrincipal = fotoOld;
                         }
                     }
                     

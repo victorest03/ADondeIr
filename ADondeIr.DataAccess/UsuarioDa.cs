@@ -23,6 +23,7 @@
                           ,u.cApellidos
                           ,u.cEmail
                           ,u.cPassword
+                          ,u.isAdmin
                         FROM Usuario u
                           WHERE u.isDeleted = 0 AND u.cEmail = @0 AND u.cPassword = @1", cEmail, cPassword);
                 }

@@ -5,22 +5,30 @@
             if (form.dataset.ajax) {
                 e.preventDefault();
                 e.stopImmediatePropagation();
+                $(form).find("input[type=text]").each(function () {
+                    if (this.inputmask)
+                        this.inputmask._valueSet(this.inputmask.unmaskedvalue(), true);
+                });
                 const xhr = new XMLHttpRequest();
                 xhr.open(form.method, form.action);
 
-                xhr.addEventListener("loadend", function () {
-                    if (form.getAttribute("data-ajax-loading") != null && form.getAttribute("data-ajax-loading") !== "")
-                        document.getElementById(form.getAttribute("data-ajax-loading").substr(1)).style.display = "none";
+                xhr.addEventListener("loadend",
+                    function () {
+                        if (form.getAttribute("data-ajax-loading") != null &&
+                            form.getAttribute("data-ajax-loading") !== "")
+                            document.getElementById(form.getAttribute("data-ajax-loading").substr(1)).style
+                                .display = "none";
 
-                    if (form.getAttribute("data-ajax-complete") != null &&
-                        form.getAttribute("data-ajax-complete") !== "")
-                        window[form.getAttribute("data-ajax-complete")].apply(this, []);;
-                });
+                        if (form.getAttribute("data-ajax-complete") != null &&
+                            form.getAttribute("data-ajax-complete") !== "")
+                            window[form.getAttribute("data-ajax-complete")].apply(this, []);;
+                    });
 
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200)
-                            window[form.getAttribute("data-ajax-success")].apply(this, [JSON.parse(xhr.responseText)]);
+                            window[form.getAttribute("data-ajax-success")].apply(this,
+                                [JSON.parse(xhr.responseText)]);
                         else
                             window[form.getAttribute("data-ajax-failure")].apply(this, [xhr.status]);
                     }
@@ -38,14 +46,17 @@
                         showLoaderOnConfirm: true
                     },
                         function () {
-                            if (form.getAttribute("data-ajax-begin") != null && form.getAttribute("data-ajax-begin") !== "")
+                            if (form.getAttribute("data-ajax-begin") != null &&
+                                form.getAttribute("data-ajax-begin") !== "")
                                 window[form.getAttribute("data-ajax-begin")].apply(this, []);
 
                             xhr.send(new FormData(form));
                         });
                 } else {
-                    if (form.getAttribute("data-ajax-loading") != null && form.getAttribute("data-ajax-loading") !== "")
-                        document.getElementById(form.getAttribute("data-ajax-loading").substr(1)).style.display = "block";
+                    if (form.getAttribute("data-ajax-loading") != null &&
+                        form.getAttribute("data-ajax-loading") !== "")
+                        document.getElementById(form.getAttribute("data-ajax-loading").substr(1)).style.display =
+                            "block";
 
                     if (form.getAttribute("data-ajax-begin") != null && form.getAttribute("data-ajax-begin") !== "")
                         window[form.getAttribute("data-ajax-begin")].apply(this, []);
@@ -56,13 +67,33 @@
         }
     }, true);
 } catch (err) { }
+
 try {
     $.validator.setDefaults({
         ignore: [],
         // other default options
     });
 
+    $.validator.settings.ignore = ".note-editor *";
+
 } catch (err) { }
+
+$("body").on("keyup keypress", "form", function (e) {
+    var keyCode = e.keyCode || e.which;
+    if (keyCode === 13) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+$(document).on("show.bs.modal", ".modal", function (event) {
+    var zIndex = 1040 + (10 * $(".modal:visible").length);
+    $(this).css("z-index", zIndex);
+    setTimeout(function () {
+        $(".modal-backdrop").not(".modal-stack").css("z-index", zIndex - 1).addClass("modal-stack");
+    }, 0);
+});
+
 $(function () {
     $(".sidebar-menu").tree();
 
@@ -210,6 +241,7 @@ function createModal(title, body, onHidden) {
 
     $modal.modal("show");
 }
+
 function getDate() {
     const now = new Date();
     const primerDia = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -220,6 +252,7 @@ function getDate() {
         LastDay: ultimoDia
     };
 }
+
 function getFormatDate(date) {
     const array = date.split("/");
     const f = new Date(array[2], array[1] - 1, array[0]);
