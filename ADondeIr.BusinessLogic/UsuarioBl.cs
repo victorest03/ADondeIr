@@ -8,7 +8,7 @@
     public class UsuarioBl
     {
         private readonly UsuarioDa _da = new UsuarioDa();
-        public List<Usuario> GetAll(int pkPais)
+        public List<Usuario> GetAll()
         {
             return _da.GetAll(usuario => usuario.isDeleted==false);
         }

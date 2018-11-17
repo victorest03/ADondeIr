@@ -222,6 +222,14 @@
     <Content Include="Content\js\TipoActividad\_Mantenimiento.min.js">
       <DependentUpon>_Mantenimiento.js</DependentUpon>
     </Content>
+    <Content Include="Content\js\Usuario\Index.js" />
+    <Content Include="Content\js\Usuario\Index.min.js">
+      <DependentUpon>Index.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Usuario\_Mantenimiento.js" />
+    <Content Include="Content\js\Usuario\_Mantenimiento.min.js">
+      <DependentUpon>_Mantenimiento.js</DependentUpon>
+    </Content>
     <Content Include="Content\plugins\Boostrap-fileinput\css\fileinput.css" />
     <Content Include="Content\plugins\Boostrap-fileinput\css\fileinput.min.css" />
     <Content Include="Content\plugins\Boostrap-fileinput\fileinput.js" />
@@ -839,8 +847,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\TipoActividadController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />

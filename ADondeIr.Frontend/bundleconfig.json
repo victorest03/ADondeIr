@@ -70,5 +70,11 @@
     "inputFiles": [
       "Content/js/Usuario/_Mantenimiento.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/Usuario/Index.min.js",
+    "inputFiles": [
+      "Content/js/Usuario/Index.js"
+    ]
   }
 ]
