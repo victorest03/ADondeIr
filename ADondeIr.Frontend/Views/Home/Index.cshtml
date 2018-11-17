@@ -1,41 +1,40 @@
-﻿
+﻿@using ADondeIr.Model
+
 @{
     ViewBag.Title = "Inicio";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var tipoActividades = (List<TipoActividad>) ViewBag.listTipoActividades;
 }
-
+@section styles
+{
+<link href="~/Content/css/Home/Index.min.css" rel="stylesheet" />
+}
 <section class="hero_single version_2">
     <div class="wrapper">
         <div class="container">
-            <h3>Find what you need!</h3>
-            <p>Discover top rated hotels, shops and restaurants around the world</p>
-            <form method="post" action="http://www.ansonika.com/sparker/grid-listings-filterscol.html">
+            <h3>¡ENCUENTRA LO QUE NECESITAS!</h3>
+            <p>Descubre los mejores lugares de todo Lima(Perú).</p>
+            <form method="post" action="/Producto/Busqueda">
                 <div class="row no-gutters custom-search-input-2">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="What are you looking for...">
+                            <input class="form-control" type="text" name="search" placeholder="Qué estás buscando...">
                             <i class="icon_search"></i>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 searchWhere">
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Where">
                             <i class="icon_pin_alt"></i>
+                            @Html.DropDownList("fkDistrito", new SelectList(ViewBag.listDistrito, "pkDistrito", "cDistrito"), "Dónde...", new { @class = "wide" })
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <select class="wide">
-                            <option>All Categories</option>
-                            <option>Shops</option>
-                            <option>Hotels</option>
-                            <option>Restaurants</option>
-                            <option>Bars</option>
-                            <option>Events</option>
-                            <option>Fitness</option>
-                        </select>
+                    <div class="col-lg-3 searchCategory">
+                        <div class="form-group">
+                            @Html.DropDownList("fkTipoActividad", new SelectList(ViewBag.listTipoActividades, "pkTipoActividad", "cTipoActividad"), "Todas las categorias", new { @class = "wide" })
+                        </div>
                     </div>
                     <div class="col-lg-2">
-                        <input type="submit" value="Search">
+                        <input type="submit" value="Buscar">
                     </div>
                 </div>
                 <!-- /row -->
@@ -48,34 +47,20 @@
 <div class="main_categories">
     <div class="container">
         <ul class="clearfix">
+            @for (var i = 0; i < (tipoActividades.Count <= 4 ? tipoActividades.Count : 4); i++)
+            {
+                var tipoActividad = tipoActividades[i];
+                <li>
+                    <a href="/Producto/Busqueda?tipoactividad=@tipoActividad.pkTipoActividad">
+                        <i class="@tipoActividad.cIcon"></i>
+                        <h3>@tipoActividad.cTipoActividad</h3>
+                    </a>
+                </li>
+            }
             <li>
-                <a href="grid-listings-filterscol.html">
-                    <i class="icon-shop"></i>
-                    <h3>Shops</h3>
-                </a>
-            </li>
-            <li>
-                <a href="grid-listings-filterscol.html">
-                    <i class="icon-lodging"></i>
-                    <h3>Hotels</h3>
-                </a>
-            </li>
-            <li>
-                <a href="grid-listings-filterscol.html">
-                    <i class="icon-restaurant"></i>
-                    <h3>Restaurants</h3>
-                </a>
-            </li>
-            <li>
-                <a href="grid-listings-filterscol.html">
-                    <i class="icon-bar"></i>
-                    <h3>Bars</h3>
-                </a>
-            </li>
-            <li>
-                <a href="grid-listings-filterscol.html">
+                <a href="/Producto/Busqueda">
                     <i class="icon-dot-3"></i>
-                    <h3>More</h3>
+                    <h3>Más</h3>
                 </a>
             </li>
         </ul>

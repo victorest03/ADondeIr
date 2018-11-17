@@ -34,6 +34,7 @@
             if (id != 0) model = _bl.Get(id);
             return PartialView("_Mantenimiento", model ?? new Producto());
         }
+
         [HttpPost]
         public JsonResult Mantenimiento(Producto model, HttpPostedFileBase foto)
         {
@@ -76,6 +77,11 @@
         {
             var stream = StorageAzureHelper.Get("producto", id, out var contentType);
             return File(stream, contentType);
+        }
+
+        public ActionResult Busqueda(string search, int? fkDistrito, int? fkTipoActividad)
+        {
+            return View();
         }
     }
 }

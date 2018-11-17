@@ -171,6 +171,10 @@
     <Content Include="Content\adminLTE\js\adminlte.min.js">
       <DependentUpon>adminlte.js</DependentUpon>
     </Content>
+    <Content Include="Content\css\Home\Index.css" />
+    <Content Include="Content\css\Home\Index.min.css">
+      <DependentUpon>Index.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Shared\_Layout.css" />
     <Content Include="Content\css\Shared\_Layout.min.css">
       <DependentUpon>_Layout.css</DependentUpon>
@@ -839,7 +843,9 @@
     <Content Include="Content\sparker\js\tables_func.js" />
     <Content Include="Content\sparker\js\video_header.js" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutenticadoAttribute.cs" />
@@ -1067,6 +1073,7 @@
     <Content Include="Content\sparker\css\icon_fonts\font\Pe-icon-7-stroke.woff" />
     <Content Include="Content\sparker\css\icon_fonts\font\themify.woff" />
     <Content Include="Content\scss\Shared\_Layout.scss" />
+    <Content Include="Content\scss\Home\Index.scss" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1085,6 +1092,8 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\_Mantenimiento.cshtml" />
     <Content Include="Views\Usuario\Profile.cshtml" />
+    <None Include="Properties\PublishProfiles\adondeir - Web Deploy.pubxml" />
+    <Content Include="Views\Producto\Busqueda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

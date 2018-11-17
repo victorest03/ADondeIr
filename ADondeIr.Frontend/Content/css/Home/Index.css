@@ -1,0 +1,13 @@
+﻿body .searchWhere i.icon_pin_alt {
+  right: initial;
+  left: 1px;
+  padding-left: 15px;
+  padding-right: initial; }
+
+body .searchWhere .nice-select .current {
+  margin-left: 35px;
+  width: calc(100% - 35px); }
+
+@media (max-width: 991px) {
+  body .searchCategory {
+    margin-top: 5px; } }
