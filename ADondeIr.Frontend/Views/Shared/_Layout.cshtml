@@ -42,8 +42,10 @@
                 </a>
             </div>
             <ul id="top_menu">
-                <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
-                @*<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>*@
+                @if (usuario == null)
+                {
+                    <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+                }
             </ul>
             <!-- /top_menu -->
             <a href="#menu" class="btn_mobile">
@@ -61,6 +63,22 @@
                     <li>
                         <span><a href="/Producto/Buscar">Buscar</a></span>
                     </li>
+                    @if (usuario != null)
+                    {
+                        <li>
+                            <span><a href="#0">Cuenta</a></span>
+                            <ul>
+                                <li><a href="/Usuario/Profile">Perfil</a></li>
+                                <li><a href="/Login/Logout">Cerrar Session</a></li>
+                            </ul>
+                        </li>
+                        if(usuario.isAdmin)
+                        {
+                            <li>
+                                <span><a href="/Dashboard">Admin</a></span>
+                            </li>
+                        }
+                    }
                 </ul>
             </nav>
         </header>
@@ -175,91 +193,95 @@
         <!--/footer-->
     </div>
     <!-- page -->
-    <!-- Sign In Popup -->
-    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-        <div class="small-dialog-header">
-            <h3 id="sign-in-title">Iniciar sesión</h3>
-        </div>
-        <div id="login" class="sign-in-wrapper">
-            @using (Html.BeginForm("Index","Login", null, FormMethod.Post, new { id = "frmLogin" }))
-            {
-                <div class="form-group">
-                    <label>Email</label>
-                    @Html.EditorFor(model => model.cEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
-                    <i class="icon_mail_alt"></i>
-                    @Html.ValidationMessageFor(model => model.cEmail, null, new { @class = "label label-danger" })
-                </div>
-                <div class="form-group">
-                    <label>Constraseña</label>
-                    @Html.PasswordFor(model => model.cPassword, new { @class = "form-control", @placeholder = "Contraseña" })
-                    <i class="icon_lock_alt"></i>
-                </div>
-                <div class="clearfix add_bottom_15">
-                    <div class="checkboxes float-left">
-                        <label class="container_check">
-                            Recuérdame
-                            @Html.CheckBoxFor(model => model.isRememberMe)
-                            <span class="checkmark"></span>
-                        </label>
+    @if (usuario == null)
+    {
+        <!-- Sign In Popup -->
+        <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+            <div class="small-dialog-header">
+                <h3 id="sign-in-title">Iniciar sesión</h3>
+            </div>
+            <div id="login" class="sign-in-wrapper">
+                @using (Html.BeginForm("Index", "Login", null, FormMethod.Post, new { id = "frmLogin" }))
+                {
+                    <div class="form-group">
+                        <label>Email</label>
+                        @Html.EditorFor(model => model.cEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                        <i class="icon_mail_alt"></i>
+                        @Html.ValidationMessageFor(model => model.cEmail, null, new { @class = "label label-danger" })
                     </div>
-                    <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">¿Se te olvidó tu contraseña?</a></div>
-                </div>
-                <div class="col-xs-12 text-center">
-                    @Html.ValidationMessage("ErrorSesion", new { @class = "label label-danger" })
-                </div>
-                <div class="text-center"><input type="submit" value="Iniciar" class="btn_1 full-width"></div>
-                <div class="text-center">
-                    ¿No tienes una cuenta? <a id="register" href="javascript:void(0);">Regístrate</a>
-                </div>
-            }
-        </div>
-        <div id="forgot_pw">
-            <div class="form-group">
-                <label>Por favor confirme el correo electrónico de acceso a continuación</label>
-                <input type="email" class="form-control" name="email_forgot" id="email_forgot">
-                <i class="icon_mail_alt"></i>
+                    <div class="form-group">
+                        <label>Constraseña</label>
+                        @Html.PasswordFor(model => model.cPassword, new { @class = "form-control", @placeholder = "Contraseña" })
+                        <i class="icon_lock_alt"></i>
+                    </div>
+                    <div class="clearfix add_bottom_15">
+                        <div class="checkboxes float-left">
+                            <label class="container_check">
+                                Recuérdame
+                                @Html.CheckBoxFor(model => model.isRememberMe)
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">¿Se te olvidó tu contraseña?</a></div>
+                    </div>
+                    <div class="col-xs-12 text-center">
+                        @Html.ValidationMessage("ErrorSesion", new { @class = "label label-danger" })
+                    </div>
+                    <div class="text-center"><input type="submit" value="Iniciar" class="btn_1 full-width"></div>
+                    <div class="text-center">
+                        ¿No tienes una cuenta? <a id="register" href="javascript:void(0);">Regístrate</a>
+                    </div>
+                }
             </div>
-            <p>Recibirá un correo electrónico con un enlace que le permitirá restablecer su contraseña a una nueva preferida.</p>
-            <div class="text-center"><input type="submit" value="Restablecer la contraseña" class="btn_1"></div>
-            <div class="text-center">
-                <a id="forgotReturn" href="javascript:void(0);">Regresar</a>
-            </div>
-        </div>
-        <div id="registerForm">
-            <form autocomplete="off">
+            <div id="forgot_pw">
                 <div class="form-group">
-                    <label>Your Name</label>
-                    <input class="form-control" type="text">
-                    <i class="ti-user"></i>
-                </div>
-                <div class="form-group">
-                    <label>Your Last Name</label>
-                    <input class="form-control" type="text">
-                    <i class="ti-user"></i>
-                </div>
-                <div class="form-group">
-                    <label>Your Email</label>
-                    <input class="form-control" type="email">
+                    <label>Por favor confirme el correo electrónico de acceso a continuación</label>
+                    <input type="email" class="form-control" name="email_forgot" id="email_forgot">
                     <i class="icon_mail_alt"></i>
                 </div>
-                <div class="form-group">
-                    <label>Your password</label>
-                    <input class="form-control" type="password" id="password1">
-                    <i class="icon_lock_alt"></i>
+                <p>Recibirá un correo electrónico con un enlace que le permitirá restablecer su contraseña a una nueva preferida.</p>
+                <div class="text-center"><input type="submit" value="Restablecer la contraseña" class="btn_1"></div>
+                <div class="text-center">
+                    <a id="forgotReturn" href="javascript:void(0);">Regresar</a>
                 </div>
-                <div class="form-group">
-                    <label>Confirm password</label>
-                    <input class="form-control" type="password" id="password2">
-                    <i class="icon_lock_alt"></i>
-                </div>
-                <div id="pass-info" class="clearfix"></div>
-                <a href="#0" class="btn_1 rounded full-width add_top_30">Register Now!</a>
-                <div class="text-center add_top_10">¿Ya tienes una cuenta? <strong><a id="registerReturn" href="javascript:void(0);">Iniciar sesión</a></strong></div>
-            </form>
+            </div>
+            <div id="registerForm">
+                <form autocomplete="off">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input class="form-control" type="text">
+                        <i class="ti-user"></i>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Last Name</label>
+                        <input class="form-control" type="text">
+                        <i class="ti-user"></i>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input class="form-control" type="email">
+                        <i class="icon_mail_alt"></i>
+                    </div>
+                    <div class="form-group">
+                        <label>Your password</label>
+                        <input class="form-control" type="password" id="password1">
+                        <i class="icon_lock_alt"></i>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm password</label>
+                        <input class="form-control" type="password" id="password2">
+                        <i class="icon_lock_alt"></i>
+                    </div>
+                    <div id="pass-info" class="clearfix"></div>
+                    <a href="#0" class="btn_1 rounded full-width add_top_30">Register Now!</a>
+                    <div class="text-center add_top_10">¿Ya tienes una cuenta? <strong><a id="registerReturn" href="javascript:void(0);">Iniciar sesión</a></strong></div>
+                </form>
+            </div>
+            <!--form -->
         </div>
-        <!--form -->
-    </div>
-    <!-- /Sign In Popup -->
+        <!-- /Sign In Popup -->
+    }
+
 
     <div id="toTop"></div><!-- Back to top button -->
     <!-- COMMON SCRIPTS -->

@@ -40,10 +40,10 @@
         }
 
         [Autenticado]
-        public ActionResult Logout()
+        public ActionResult Logout(string id)
         {
             SessionHelper.DestroyUserSessionAndCookie();
-            return RedirectToAction("Index");
+            return id == "frontend" ? RedirectToAction("Index") : RedirectToAction("Index", "Home");
         }
     }
 }

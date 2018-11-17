@@ -7,27 +7,37 @@
     using Common.Session;
     using Model;
 
-    [Autenticado(IsAdmin = true)]
     public class UsuarioController : BaseController
     {
         private readonly UsuarioBl _bl = new UsuarioBl();
-        // GET: Usuario
+
+        [Autenticado(IsAdmin = true)]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Autenticado]
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
+        [Autenticado(IsAdmin = true)]
         public JsonResult Listado()
         {
             return Json(new { data = _bl.GetAll() }, JsonRequestBehavior.AllowGet);
         }
 
+        [Autenticado(IsAdmin = true)]
         public PartialViewResult PartialMantenimiento(int id = 0)
         {
             Usuario model = null;
             if (id != 0) model = _bl.Get(id);
             return PartialView("_Mantenimiento", model ?? new Usuario());
         }
+
+        [Autenticado(IsAdmin = true)]
         [HttpPost]
         public JsonResult Mantenimiento(Usuario model)
         {
@@ -52,6 +62,7 @@
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [Autenticado(IsAdmin = true)]
         public JsonResult Delete(int id)
         {
             return Json(_bl.Delete(id, GetUser<Usuario>().pkUsuario), JsonRequestBehavior.AllowGet);
