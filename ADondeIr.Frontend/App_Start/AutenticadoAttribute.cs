@@ -9,6 +9,7 @@
     public class AutenticadoAttribute : ActionFilterAttribute
     {
         public bool IsAdmin { get; set; }
+        public bool Optional { get; set; }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -33,6 +34,7 @@
                         return;
                     }
 
+                    if (Optional) return;
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                     {
                         controller = "Login",
@@ -46,6 +48,7 @@
             }
             else
             {
+                if (Optional) return;
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {
                     controller = "Login",

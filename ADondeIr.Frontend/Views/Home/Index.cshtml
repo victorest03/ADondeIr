@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Inicio";
+    ViewBag.IsHome = true;
+
     Layout = "~/Views/Shared/_Layout.cshtml";
     var tipoActividades = (List<TipoActividad>) ViewBag.listTipoActividades;
 }

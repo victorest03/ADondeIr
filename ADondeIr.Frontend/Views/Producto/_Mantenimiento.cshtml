@@ -36,6 +36,21 @@
                             @Html.DropDownListFor(model => model.fkDistrito, new SelectList(ViewBag.listDistrito, "pkDistrito", "cDistrito"), "--Seleccione Distrito--", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.fkDistrito, null, new { @class = "label label-danger" })
                         </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.cGoogleMaps)
+                            @Html.EditorFor(model => model.cGoogleMaps, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cGoogleMaps, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.cLatitud)
+                            @Html.EditorFor(model => model.cLatitud, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cLatitud, null, new { @class = "label label-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.cLongitud)
+                            @Html.EditorFor(model => model.cLongitud, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.cLongitud, null, new { @class = "label label-danger" })
+                        </div>
                         <div class="col-sm-8">
                             @Html.LabelFor(model => model.cTags)
                             @Html.EditorFor(model => model.cTags, new { htmlAttributes = new { @class = "form-control" } })

@@ -39,5 +39,15 @@
         {
             return entity.pkProducto == 0 ? _da.Insert(entity) : _da.Update(entity);
         }
+
+        public int Count()
+        {
+            return _da.Count();
+        }
+
+        public List<Producto> GetAllLazy(ProductoFilter filter, out int filteredResultsCount, out int totalResultsCount)
+        {
+            return _da.GetAllLazy(filter, out filteredResultsCount, out totalResultsCount);
+        }
     }
 }

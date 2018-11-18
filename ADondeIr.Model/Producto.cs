@@ -33,8 +33,19 @@
 
         [Reference(ReferenceType.OneToOne, ColumnName = "fkDistrito", ReferenceMemberName = "pkDistrito")]
         public Distrito Distrito { get; set; }
+
         [Display(Name = "Distrito")]
         public int fkDistrito { get; set; }
+
+        [Display(Name = "Google Maps")]
+        public string cGoogleMaps { get; set; }
+
+        [Display(Name = "Latitud")]
+        public string cLatitud { get; set; }
+
+        [Display(Name = "Longitud")]
+        public string cLongitud { get; set; }
+
 
         [Display(Name = "Foto Principal")]
         [Reference(ReferenceType.Foreign, ColumnName = "fkFotoPrincipal", ReferenceMemberName = "pkFoto")]
@@ -61,6 +72,14 @@
             RuleFor(x => x.cObservacionPrincipal).NotNull().WithMessage("Ingrese un Observacion principal!!!");
 
             RuleFor(x => x.fkDistrito).NotEmpty().WithMessage("Seleccione un Distrito!!!");
+
+            RuleFor(x => x.cGoogleMaps).NotEmpty().WithMessage("Ingresge la url de la ubicacion en Google Maps!!!");
+
+            RuleFor(x => x.cLatitud).NotEmpty().WithMessage("Ingrese la latitud de la ubicacion!!!")
+                .Matches(@"^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$").WithMessage("Ingrese una Latitud Correcta!!!");
+
+            RuleFor(x => x.cLongitud).NotEmpty().WithMessage("Ingrese la longitud de la ubicacion!!!")
+                .Matches(@"^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$").WithMessage("Ingrese una Longitud Correcta!!!");
 
             RuleFor(x => x.cTags).NotEmpty().WithMessage("Ingrese almenos un Tag!!!");
 

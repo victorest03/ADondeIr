@@ -1,6 +1,7 @@
 ﻿namespace ADondeIr.Frontend.Controllers
 {
     using BusinessLogic;
+    using Common.Attributes.ActionFilter;
     using Common.Extensions;
     using Common.Methods;
     using Common.Model;
@@ -8,7 +9,6 @@
     using Model;
     using System.Web;
     using System.Web.Mvc;
-    using Common.Attributes.ActionFilter;
 
     public class ProductoController : BaseController
     {
@@ -81,7 +81,29 @@
 
         public ActionResult Busqueda(string search, int? fkDistrito, int? fkTipoActividad)
         {
+            ViewBag.totalProducts = _bl.Count();
+
+            ViewBag.search = search;
+            ViewBag.distrito = fkDistrito;
+            ViewBag.tipoActividad = fkTipoActividad;
+
+            ViewBag.listDistrito = new DistritoBl().GetAll();
+            ViewBag.listTipoActividades = new TipoActividadBl().GetAll();
             return View();
+        }
+        
+
+        [JsonResultCustom]
+        public JsonResult ListadoLazy(ProductoFilter model)
+        {
+            var dataResult = _bl.GetAllLazy(model, out var filteredResultsCount, out var totalResultsCount);
+
+            return Json(new
+            {
+                recordsTotal = totalResultsCount,
+                recordsFiltered = filteredResultsCount,
+                data = dataResult
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

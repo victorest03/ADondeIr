@@ -33,14 +33,28 @@
 </head>
 
 <body>
-    <div id="page">
-        <header class="header menu_fixed">
+    <div id="page" class="@(ViewBag.IsHome != true ? "theia-exception":"")">
+        <header class="@(ViewBag.IsHome != true ? "header_in":"header menu_fixed")">
+            @if (ViewBag.IsHome != true)
+            {
+                @Html.Raw(@"<div class='container'>
+                                <div class='row'>
+                                    <div class='col-lg-3 col-12'>")
+            }
             <div id="logo">
                 <a href="/Home" title="Sparker - Directory and listings template">
+                    @if (ViewBag.IsHome == true)
+                    {
                     <img src="~/Content/image/logo.png" width="165" height="35" alt="" class="logo_normal">
+                    }
                     <img src="~/Content/image/logo_sticky.png" width="165" height="35" alt="" class="logo_sticky">
                 </a>
             </div>
+            @if (ViewBag.IsHome != true)
+            {
+                @Html.Raw(@"</div>
+                            <div class='col-lg-9 col-12'>")
+            }
             <ul id="top_menu">
                 @if (usuario == null)
                 {
@@ -72,7 +86,7 @@
                                 <li><a href="/Login/Logout">Cerrar Session</a></li>
                             </ul>
                         </li>
-                        if(usuario.isAdmin)
+                        if (usuario.isAdmin)
                         {
                             <li>
                                 <span><a href="/Dashboard">Admin</a></span>
@@ -81,10 +95,14 @@
                     }
                 </ul>
             </nav>
+            @if (ViewBag.IsHome != true)
+            {
+                @Html.Raw(@"</div></div></div>")
+            }
         </header>
         <!-- /header -->
 
-        <main class="pattern">
+        <main class="@(ViewBag.IsHome != true ? "":"pattern")">
             @RenderBody()
         </main>
         <!-- /main -->
@@ -289,7 +307,7 @@
     <script src="~/Content/sparker/js/functions.js"></script>
 
     <!-- SPECIFIC SCRIPTS -->
-    <script src="~/Content/sparker/js/animated_canvas_min.js"></script>
+    @*<script src="~/Content/sparker/js/animated_canvas_min.js"></script>*@
     @Scripts.Render("~/Scripts/Validation")
     <!-- Layout Js -->
     <script src="~/Content/js/Shared/_Layout.min.js?v=@DateTime.Now.Ticks.ToString()"></script>

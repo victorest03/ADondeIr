@@ -15,6 +15,12 @@
                 }
             },
             {
+                data: "cGoogleMaps", title: "Google Maps",
+                render: function (data) {
+                    return `<a class="btn btn-link btn-xs" href="${data}" target="_blank">Ir a Google Maps</a>`; 
+                }
+            },
+            {
                 data: null,
                 defaultContent:
                     "<button type='button' class='btn btn-primary btn-update' data-toggle='tooltip' title='Editar'><i class='fa fa-pencil'></i></button>",

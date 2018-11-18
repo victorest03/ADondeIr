@@ -76,5 +76,11 @@
     "inputFiles": [
       "Content/js/Usuario/Index.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/Producto/Busqueda.min.js",
+    "inputFiles": [
+      "Content/js/Producto/Busqueda.js"
+    ]
   }
 ]

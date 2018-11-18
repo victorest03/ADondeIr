@@ -3,6 +3,7 @@
     using System.Web.Mvc;
     using BusinessLogic;
 
+    [Autenticado(Optional = true)]
     public class HomeController : Controller
     {
         // GET: Home

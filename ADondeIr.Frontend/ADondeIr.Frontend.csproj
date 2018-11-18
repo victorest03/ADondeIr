@@ -175,6 +175,10 @@
     <Content Include="Content\css\Home\Index.min.css">
       <DependentUpon>Index.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Producto\Busqueda.css" />
+    <Content Include="Content\css\Producto\Busqueda.min.css">
+      <DependentUpon>Busqueda.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Shared\_Layout.css" />
     <Content Include="Content\css\Shared\_Layout.min.css">
       <DependentUpon>_Layout.css</DependentUpon>
@@ -201,6 +205,10 @@
     <Content Include="Content\js\Empresa\_Mantenimiento.js" />
     <Content Include="Content\js\Empresa\_Mantenimiento.min.js">
       <DependentUpon>_Mantenimiento.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Producto\Busqueda.js" />
+    <Content Include="Content\js\Producto\Busqueda.min.js">
+      <DependentUpon>Busqueda.js</DependentUpon>
     </Content>
     <Content Include="Content\js\Producto\Index.js" />
     <Content Include="Content\js\Producto\Index.min.js">
@@ -830,6 +838,7 @@
     <Content Include="Content\sparker\css\style.css" />
     <Content Include="Content\sparker\css\tables.css" />
     <Content Include="Content\sparker\css\vendors.css" />
+    <Content Include="Content\sparker\img\search.svg" />
     <Content Include="Content\sparker\js\animated_canvas_min.js" />
     <Content Include="Content\sparker\js\common_scripts.js" />
     <Content Include="Content\sparker\js\functions.js" />
@@ -1074,6 +1083,7 @@
     <Content Include="Content\sparker\css\icon_fonts\font\themify.woff" />
     <Content Include="Content\scss\Shared\_Layout.scss" />
     <Content Include="Content\scss\Home\Index.scss" />
+    <Content Include="Content\scss\Producto\Busqueda.scss" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -10,5 +10,9 @@
   {
     "outputFile": "Content/css/Home/Index.css",
     "inputFile": "Content/scss/Home/Index.scss"
+  },
+  {
+    "outputFile": "Content/css/Producto/Busqueda.css",
+    "inputFile": "Content/scss/Producto/Busqueda.scss"
   }
 ]
