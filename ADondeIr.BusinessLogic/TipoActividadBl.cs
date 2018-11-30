@@ -8,9 +8,12 @@
     public class TipoActividadBl
     {
         private readonly TipoActividadDa _da = new TipoActividadDa();
+        private readonly ProductoDa _daProducto = new ProductoDa();
         public List<TipoActividad> GetAll()
         {
-            return _da.GetAll(e => e.isDeleted == false);
+            var tipoActividades = _da.GetAll(e => e.isDeleted == false);
+            tipoActividades.ForEach(e => { e.eTotalProductos = _daProducto.Count(null, e.pkTipoActividad); });
+            return tipoActividades;
         }
 
         public TipoActividad Get(int id)

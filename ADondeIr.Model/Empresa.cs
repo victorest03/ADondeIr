@@ -20,6 +20,9 @@
         [Display(Name = "Telefono")]
         public string cTelefono { get; set; }
 
+        [Ignore]
+        public int eTotalProductos { get; set; }
+
     }
 
     public class EmpresaValidator : AbstractValidator<Empresa>

@@ -47,7 +47,8 @@
             RuleFor(x => x.cNombres).NotEmpty().WithMessage("Ingrese un Nombre!!!");
             RuleFor(x => x.cApellidos).NotEmpty().WithMessage("Ingrese un Apellido!!!");
             RuleFor(x => x.cEmail).NotEmpty().WithMessage("Ingrese un Email!!!");
-            RuleFor(x => x.cPassword).NotEmpty().WithMessage("Ingrese un Password!!!");
+            RuleFor(x => x.cPassword).NotEmpty().WithMessage("Ingrese un Password!!!")
+                .Matches(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$").WithMessage("Ingrese una Password valido!!!");
         }
     }
 

@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
     using BusinessLogic;
+    using Common.Attributes.ActionFilter;
     using Common.Extensions;
     using Common.Model;
     using Common.Session;
@@ -17,6 +18,7 @@
             return View();
         }
 
+        [JsonResultCustom]
         public JsonResult Listado()
         {
             return Json(new { data = _bl.GetAll() }, JsonRequestBehavior.AllowGet);

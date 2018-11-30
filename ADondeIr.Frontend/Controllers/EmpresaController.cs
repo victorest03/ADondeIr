@@ -6,6 +6,7 @@
     using Common.Session;
     using Model;
     using System.Web.Mvc;
+    using Common.Attributes.ActionFilter;
 
     [Autenticado(IsAdmin = true)]
     public class EmpresaController : BaseController
@@ -17,6 +18,7 @@
             return View();
         }
 
+        [JsonResultCustom]
         public JsonResult Listado()
         {
             return Json(new { data = _bl.GetAll() }, JsonRequestBehavior.AllowGet);

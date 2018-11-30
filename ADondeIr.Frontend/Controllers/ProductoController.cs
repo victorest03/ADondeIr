@@ -1,5 +1,6 @@
 ﻿namespace ADondeIr.Frontend.Controllers
 {
+    using System.Linq;
     using BusinessLogic;
     using Common.Attributes.ActionFilter;
     using Common.Extensions;
@@ -9,6 +10,7 @@
     using Model;
     using System.Web;
     using System.Web.Mvc;
+    using WebGrease.Css.Extensions;
 
     public class ProductoController : BaseController
     {
@@ -97,7 +99,10 @@
         public JsonResult ListadoLazy(ProductoFilter model)
         {
             var dataResult = _bl.GetAllLazy(model, out var filteredResultsCount, out var totalResultsCount);
-
+            dataResult.Where(p=>p.cObservacionPrincipal.Length > 130).ForEach(p =>
+                {
+                    p.cObservacionPrincipal = p.cObservacionPrincipal.Substring(0, 130) + "...";
+                });
             return Json(new
             {
                 recordsTotal = totalResultsCount,

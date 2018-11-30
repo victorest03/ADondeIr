@@ -5,9 +5,22 @@
         "lengthChange": true,
         "ajax": "/Empresa/Listado",
         "columns": [
+            {
+                data: "pkEmpresa", title: "Codigo",
+                render: function (data) {
+                    return `EM${zfill(data,5)}`;
+                }
+            },
             { data: "cEmpresa", title: "Descripción" },
             { data: "cDireccion", title: "Direccion" },
             { data: "cTelefono", title: "Teléfono" },
+            { data: "eTotalProductos", title: " # Productos" },
+            {
+                data: "fFechaCrea", title: "F. Creación",
+                render: function(data) {
+                    return new Date(data).format("dd-mm-yyyy");
+                }
+            },
             {
                 data: null,
                 defaultContent:

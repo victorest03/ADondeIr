@@ -8,9 +8,12 @@
     public class EmpresaBl
     {
         private readonly EmpresaDa _da = new EmpresaDa();
+        private readonly ProductoDa _daProducto = new ProductoDa();
         public List<Empresa> GetAll()
         {
-            return _da.GetAll(e => e.isDeleted == false);
+            var empresas = _da.GetAll(e => e.isDeleted == false);
+            empresas.ForEach(e => { e.eTotalProductos = _daProducto.Count(e.pkEmpresa); });
+            return empresas;
         }
 
         public Empresa Get(int id)

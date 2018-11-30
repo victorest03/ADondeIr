@@ -16,6 +16,9 @@
 
         [Display(Name = "Icono(FontAwesome)")]
         public string cIcon { get; set; }
+
+        [Ignore]
+        public int eTotalProductos { get; set; }
     }
 
     public class TipoActividadValidator : AbstractValidator<TipoActividad>

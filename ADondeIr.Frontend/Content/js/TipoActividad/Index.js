@@ -5,8 +5,21 @@
         "lengthChange": true,
         "ajax": "/TipoActividad/Listado",
         "columns": [
+            {
+                data: "pkTipoActividad", title: "Codigo",
+                render: function (data) {
+                    return `TS${zfill(data, 5)}`;
+                }
+            },
             { data: "cTipoActividad", title: "Descripción" },
             { data: "cIcon", title: "Icono" },
+            { data: "eTotalProductos", title: " # Productos" },
+            {
+                data: "fFechaCrea", title: "F. Creación",
+                render: function (data) {
+                    return new Date(data).format("dd-mm-yyyy");
+                }
+            },
             {
                 data: null,
                 defaultContent:
@@ -14,7 +27,8 @@
                 "orderable": false,
                 "searchable": false,
                 "width": "26px"
-            }, {
+            },
+            {
                 data: null,
                 defaultContent:
                     "<button type='button' class='btn btn-danger btn-delete' data-toggle='tooltip' title='Eliminar'><i class='fa fa-trash'></i></button>",

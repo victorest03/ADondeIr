@@ -74,14 +74,17 @@
             return result;
         }
 
-        public int Count()
+        public int Count(int? fkEmpresa = null, int? fkTipoActividad = null)
         {
             var result = 0;
             try
             {
                 using (IDatabase db = DbContext.GetInstance())
                 {
-                    result = db.Query<Producto>().Where(p => !p.isDeleted).Count();
+                    var query = db.Query<Producto>().Where(p => !p.isDeleted);
+                    if (fkEmpresa != null) query.Where(p => p.fkEmpresa == fkEmpresa);
+                    if (fkTipoActividad != null) query.Where(p => p.fkTipoActividad == fkTipoActividad);
+                    result = query.Count();
                 }
             }
             catch (Exception e)
@@ -122,7 +125,7 @@
 
                     query.OrderBy(p => p.cProducto);
 
-                    var t = query.ToPage((filter.start + filter.length) / filter.length, filter.length);
+                    var t = query.ToPage((filter.start * filter.length) / filter.length, filter.length);
 
                     outtotalResultsCount = db.Query<Producto>().Count(c => !c.isDeleted);
                     outfilteredResultsCount = (int)t.TotalItems;

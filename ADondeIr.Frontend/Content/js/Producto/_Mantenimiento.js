@@ -17,7 +17,7 @@ $(function () {
         showCaption: false,
         allowedFileExtensions: ["png", "jpeg", "jpg"],
         maxFileCount: 1,
-        maxFileSize: 5120
+        maxFileSize: 1024
     }).on("fileclear",
         function () {
             $(this).fileinput("enable");

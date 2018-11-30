@@ -14,7 +14,7 @@
 <section class="hero_single version_2">
     <div class="wrapper">
         <div class="container">
-            <h3>¡ENCUENTRA LO QUE NECESITAS!</h3>
+            <h3>¡TU RUTA A LA DIVERSIÓN!</h3>
             <p>Descubre los mejores lugares de todo Lima(Perú).</p>
             <form method="post" action="/Producto/Busqueda">
                 <div class="row no-gutters custom-search-input-2">
@@ -53,7 +53,7 @@
             {
                 var tipoActividad = tipoActividades[i];
                 <li>
-                    <a href="/Producto/Busqueda?tipoactividad=@tipoActividad.pkTipoActividad">
+                    <a href="/Producto/Busqueda?fkTipoActividad=@tipoActividad.pkTipoActividad">
                         <i class="@tipoActividad.cIcon"></i>
                         <h3>@tipoActividad.cTipoActividad</h3>
                     </a>

@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
     using BusinessLogic;
+    using Common.Attributes.ActionFilter;
     using Common.Extensions;
     using Common.Model;
     using Common.Session;
@@ -24,6 +25,7 @@
         }
 
         [Autenticado(IsAdmin = true)]
+        [JsonResultCustom]
         public JsonResult Listado()
         {
             return Json(new { data = _bl.GetAll() }, JsonRequestBehavior.AllowGet);

@@ -40,9 +40,9 @@
             return entity.pkProducto == 0 ? _da.Insert(entity) : _da.Update(entity);
         }
 
-        public int Count()
+        public int Count(int? fkEmpresa = null)
         {
-            return _da.Count();
+            return _da.Count(fkEmpresa);
         }
 
         public List<Producto> GetAllLazy(ProductoFilter filter, out int filteredResultsCount, out int totalResultsCount)

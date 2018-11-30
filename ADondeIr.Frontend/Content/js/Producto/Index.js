@@ -5,6 +5,12 @@
         "lengthChange": true,
         "ajax": "/Producto/Listado",
         "columns": [
+            {
+                data: "pkProducto", title: "Codigo",
+                render: function (data) {
+                    return `PR${zfill(data, 5)}`;
+                }
+            },
             { data: "cProducto", title: "Descripción" },
             { data: "TipoActividad.cTipoActividad", title: "Tipo de Actividad" },
             { data: "Distrito.cDistrito", title: "Distrito" },
@@ -18,6 +24,12 @@
                 data: "cGoogleMaps", title: "Google Maps",
                 render: function (data) {
                     return `<a class="btn btn-link btn-xs" href="${data}" target="_blank">Ir a Google Maps</a>`; 
+                }
+            },
+            {
+                data: "fFechaCrea", title: "F. Creación",
+                render: function (data) {
+                    return new Date(data).format("dd-mm-yyyy");
                 }
             },
             {
