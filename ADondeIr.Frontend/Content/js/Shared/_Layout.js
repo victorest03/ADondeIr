@@ -45,5 +45,26 @@
         $("#sign-in-title").text("Iniciar sesión");
     });
 
-    
+    $("#btnRestablecerContrasena").on("click", function () {
+
+        if ($("#email_forgot").val() === "") alert("ingrese un email");
+
+        $.ajax({
+            url: "/Login/Forgot",
+            data: {
+                email: $("#email_forgot").val()
+            },
+            type: "POST",
+            cache: false,
+            success: function (data) {
+                if (data.Success) {
+                    alert("Se envio un email a la cuenta indicada!!!");
+                    $("#email_forgot").val("");
+                    $("#forgotReturn").trigger("click");
+                } else {
+                    alert(`Ocurrio un error: ${data.Message}`);
+                }
+            }
+        });
+    });
 })

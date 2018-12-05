@@ -7,9 +7,12 @@
     public class DistritoBl
     {
         private readonly DistritoDa _da = new DistritoDa();
+        private readonly ProductoDa _daProducto = new ProductoDa();
         public List<Distrito> GetAll()
         {
-            return _da.GetAll();
+            var distritos = _da.GetAll();
+            distritos.ForEach(d => d.eTotalProductos = _daProducto.Count(null, null, d.pkDistrito));
+            return distritos;
         }
     }
 }

@@ -3,9 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Common.Extensions;
     using Common.Model;
     using Model;
     using NPoco;
+    using NPoco.Expressions;
     using Repository;
 
     public class ProductoDa : Repository<Producto>
@@ -74,7 +76,7 @@
             return result;
         }
 
-        public int Count(int? fkEmpresa = null, int? fkTipoActividad = null)
+        public int Count(int? fkEmpresa = null, int? fkTipoActividad = null, int? fkDistrito = null)
         {
             var result = 0;
             try
@@ -84,6 +86,7 @@
                     var query = db.Query<Producto>().Where(p => !p.isDeleted);
                     if (fkEmpresa != null) query.Where(p => p.fkEmpresa == fkEmpresa);
                     if (fkTipoActividad != null) query.Where(p => p.fkTipoActividad == fkTipoActividad);
+                    if (fkDistrito != null) query.Where(p => p.fkDistrito == fkDistrito);
                     result = query.Count();
                 }
             }
@@ -113,11 +116,11 @@
                     query.Include(p => p.FotoPrincipal);
                     query.Where(s => !s.isDeleted);
 
-                    if (filter.distrito != null && filter.distrito != 0)
-                        query.Where(p => p.fkDistrito == filter.distrito);
+                    if (!string.IsNullOrEmpty(filter.distrito))
+                        query.Where(p => p.fkDistrito.In(filter.distrito.SplitInt(",")));
 
-                    if (filter.tipoActividad != null && filter.tipoActividad != 0)
-                        query.Where(p => p.fkTipoActividad == filter.tipoActividad);
+                    if (!string.IsNullOrEmpty(filter.tipoActividad))
+                        query.Where(p => p.fkTipoActividad.In(filter.tipoActividad.SplitInt(",")));
 
                     query.Where(w =>
                         w.cProducto.ToLower().Contains(filter.search) ||

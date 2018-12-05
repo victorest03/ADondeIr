@@ -1,0 +1,66 @@
+﻿@using ADondeIr.Common.Session
+@model ADondeIr.Model.Producto
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles
+{
+<link href="~/Content/css/Producto/Detalle.min.css" rel="stylesheet" />
+}
+<div class="hero_in hotels_detail">
+    <div class="wrapper">
+        <img class="img_principal" src="/Producto/Foto/@Model.FotoPrincipal.cFileName" alt="@Model.cProducto" />
+    </div>
+</div>
+<!--/hero_in-->
+
+<nav class="secondary_nav sticky_horizontal_2">
+    <div class="container">
+        <ul class="clearfix">
+            <li><a href="#description" class="active">Description</a></li>
+            <li><a href="#reviews"></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container margin_60_35">
+    <div class="row">
+        <div class="col-lg-8">
+            <section id="description">
+                <div class="detail_title_1">
+                    <h1>@Model.cProducto</h1>
+                    <a class="address" href="@Model.cGoogleMaps" target="_blank">Ver Google Maps</a>
+                </div>
+
+                <div>
+                    @Html.Raw(Model.cObservacionGeneral)
+                </div>
+                
+                <br/>
+                <!-- End Map -->
+            </section>
+            <!-- /section -->
+        </div>
+        <!-- /col -->
+
+        <aside class="col-lg-4" id="sidebar" style="z-index: 1000;">
+            <div class="box_detail booking">
+                <div class="price">
+                    <span>S/ @Model.dPrecio.ToString("##.00") <small>persona</small></span>
+                </div>
+                @if (SessionHelper.ExistUserInSession())
+                {
+                    <button type="button" class=" add_top_30 btn_1 full-width purchase" id="btnAddProductoToRuta" data-id="@Model.pkProducto">Agregar a la Ruta</button>
+                }
+                <div class="text-center"><small>El precio es referencial</small></div>
+            </div>
+        </aside>
+    </div>
+    <!-- /row -->
+</div>
+<!-- /container -->
+@section scripts
+{
+<script src="~/Content/js/Producto/Detalle.min.js"></script>
+}

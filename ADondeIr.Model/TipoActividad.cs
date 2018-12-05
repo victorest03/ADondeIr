@@ -14,6 +14,9 @@
         [Display(Name = "Tipo de Actividad")]
         public string cTipoActividad { get; set; }
 
+        [Display(Name = "Descripcion")]
+        public string cDescripcion { get; set; }
+
         [Display(Name = "Icono(FontAwesome)")]
         public string cIcon { get; set; }
 

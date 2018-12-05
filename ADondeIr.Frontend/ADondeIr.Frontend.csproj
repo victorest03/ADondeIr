@@ -179,6 +179,10 @@
     <Content Include="Content\css\Producto\Busqueda.min.css">
       <DependentUpon>Busqueda.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\Producto\Detalle.css" />
+    <Content Include="Content\css\Producto\Detalle.min.css">
+      <DependentUpon>Detalle.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Shared\_Layout.css" />
     <Content Include="Content\css\Shared\_Layout.min.css">
       <DependentUpon>_Layout.css</DependentUpon>
@@ -210,6 +214,10 @@
     <Content Include="Content\js\Producto\Busqueda.min.js">
       <DependentUpon>Busqueda.js</DependentUpon>
     </Content>
+    <Content Include="Content\js\Producto\Detalle.js" />
+    <Content Include="Content\js\Producto\Detalle.min.js">
+      <DependentUpon>Detalle.js</DependentUpon>
+    </Content>
     <Content Include="Content\js\Producto\Index.js" />
     <Content Include="Content\js\Producto\Index.min.js">
       <DependentUpon>Index.js</DependentUpon>
@@ -217,6 +225,10 @@
     <Content Include="Content\js\Producto\_Mantenimiento.js" />
     <Content Include="Content\js\Producto\_Mantenimiento.min.js">
       <DependentUpon>_Mantenimiento.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Ruta\Active.js" />
+    <Content Include="Content\js\Ruta\Active.min.js">
+      <DependentUpon>Active.js</DependentUpon>
     </Content>
     <Content Include="Content\js\Shared\_Layout.js" />
     <Content Include="Content\js\Shared\_LayoutAdmin.js" />
@@ -865,6 +877,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\RutaController.cs" />
     <Compile Include="Controllers\TipoActividadController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1084,6 +1097,7 @@
     <Content Include="Content\scss\Shared\_Layout.scss" />
     <Content Include="Content\scss\Home\Index.scss" />
     <Content Include="Content\scss\Producto\Busqueda.scss" />
+    <Content Include="Content\scss\Producto\Detalle.scss" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1104,6 +1118,9 @@
     <Content Include="Views\Usuario\Profile.cshtml" />
     <None Include="Properties\PublishProfiles\adondeir - Web Deploy.pubxml" />
     <Content Include="Views\Producto\Busqueda.cshtml" />
+    <Content Include="Views\Producto\Detalle.cshtml" />
+    <Content Include="Views\Ruta\Index.cshtml" />
+    <Content Include="Views\Ruta\Active.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

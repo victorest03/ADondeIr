@@ -39,7 +39,6 @@
             return PartialView("_Mantenimiento", model ?? new Usuario());
         }
 
-        [Autenticado(IsAdmin = true)]
         [HttpPost]
         public JsonResult Mantenimiento(Usuario model)
         {

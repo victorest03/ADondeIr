@@ -23,6 +23,9 @@
         [Display(Name = "Password")]
         public string cPassword { get; set; }
 
+        [Ignore]
+        public string cConfirmPassword { get; set; }
+
         public bool isAdmin { get; set; }
 
     }
@@ -49,6 +52,9 @@
             RuleFor(x => x.cEmail).NotEmpty().WithMessage("Ingrese un Email!!!");
             RuleFor(x => x.cPassword).NotEmpty().WithMessage("Ingrese un Password!!!")
                 .Matches(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$").WithMessage("Ingrese una Password valido!!!");
+            RuleFor(x => x.cConfirmPassword).Equal(x => x.cPassword)
+                .WithMessage("No ha ingresado la misma contraseña!!!")
+                .When(x => x.pkUsuario != 0);
         }
     }
 

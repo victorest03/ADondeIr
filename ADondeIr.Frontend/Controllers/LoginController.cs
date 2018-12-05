@@ -45,5 +45,10 @@
             SessionHelper.DestroyUserSessionAndCookie();
             return id == "frontend" ? RedirectToAction("Index") : RedirectToAction("Index", "Home");
         }
+
+        public JsonResult Forgot(string email)
+        {
+            return Json(_bl.Forgot(email));
+        }
     }
 }

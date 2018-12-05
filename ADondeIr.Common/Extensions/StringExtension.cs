@@ -1,6 +1,9 @@
 ﻿namespace ADondeIr.Common.Extensions
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Mail;
+    using System.Threading;
     using Methods;
 
     public static class StringExtension
@@ -34,6 +37,26 @@
         public static string Decrypt(this string value)
         {
             return new EncryptorString().Decrypt(value);
+        }
+
+        public static int[] SplitInt(this string cadena, string separator)
+        {
+            var ls = new List<int>();
+            cadena.Split(char.Parse(separator)).ToList().ForEach(f =>
+            {
+                if (int.TryParse(f, out _))
+                {
+                    ls.Add(int.Parse(f));
+                }
+            });
+            return ls.ToArray();
+        }
+
+        public static string ToCapitalize(this string value)
+        {
+            var cultureInfo = Thread.CurrentThread.CurrentCulture;
+            var textInfo = cultureInfo.TextInfo;
+            return textInfo.ToTitleCase(value.ToLower());
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿namespace ADondeIr.BusinessLogic
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using Common.Methods;
     using Common.Model;
     using DataAccess;
     using Model;
@@ -36,6 +38,23 @@
         public Result SaveChangePassword(Usuario entity)
         {
             return _da.Update(entity, new[] {"cPassword", "isFirstSession", "fkUsuarioEdita", "fFechaEdita"});
+        }
+
+        public Result Forgot(string email)
+        {
+            var result = new  Result();
+            var usuario = _da.GetAll(u => u.cEmail.Equals(email)).FirstOrDefault();
+            if (usuario != null)
+            {
+                SendMailHelper.SendMail(new []{ usuario.cEmail },"Recuperar Contraseña", $"Su Contraseña es : {usuario.cPassword}");
+                result.Success = true;
+            }
+            else
+            {
+                result.Message = "No se cuenta con una cuenta registrada con el email indicado!!";
+            }
+
+            return result;
         }
     }
 }

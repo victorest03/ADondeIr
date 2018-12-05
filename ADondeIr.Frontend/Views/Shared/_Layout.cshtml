@@ -1,9 +1,15 @@
 ﻿@using System.Web.Optimization
+@using ADondeIr.BusinessLogic
+@using ADondeIr.Common.Extensions
 @using ADondeIr.Common.Session
 @using ADondeIr.Model
-@model ADondeIr.Model.Login
 @{
     var usuario = (Usuario)SessionHelper.GetUser();
+    Ruta rutaActual = null;
+    if (usuario != null)
+    {
+        rutaActual = new RutaBl().GetActiva(usuario.pkUsuario);
+    }
 }
 
 <!DOCTYPE html>
@@ -60,6 +66,10 @@
                 {
                     <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
                 }
+                else
+                {
+                    <li><a href="/Ruta/Active" class="btn_add"> @(rutaActual == null || rutaActual.RutaProducto == null ? "0": rutaActual.RutaProducto.Count.ToString()) Productos</a></li>
+                }
             </ul>
             <!-- /top_menu -->
             <a href="#menu" class="btn_mobile">
@@ -80,9 +90,9 @@
                     @if (usuario != null)
                     {
                         <li>
-                            <span><a href="#0">Cuenta</a></span>
+                            <span><a href="#0">@($"Hola, {usuario.cNombres.ToCapitalize()}")</a></span>
                             <ul>
-                                <li><a href="/Usuario/Profile">Perfil</a></li>
+                                @*<li><a href="/Usuario/Profile">Perfil</a></li>*@
                                 <li><a href="/Login/Logout">Cerrar Session</a></li>
                             </ul>
                         </li>
@@ -101,6 +111,16 @@
             }
         </header>
         <!-- /header -->
+        
+        @if (ViewBag.SubTitle != null)
+        {
+            <div class="sub_header_in sticky_header">
+                <div class="container">
+                    <h1>@ViewBag.SubTitle</h1>
+                </div>
+                <!-- /container -->
+            </div>
+        }
 
         <main class="@(ViewBag.IsHome != true ? "":"pattern")">
             @RenderBody()
@@ -223,27 +243,28 @@
                 {
                     <div class="form-group">
                         <label>Email</label>
-                        @Html.EditorFor(model => model.cEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                        <input class="form-control text-box single-line" data-val="true" data-val-required="Ingrese un Email!!!" id="cEmail" name="cEmail" placeholder="Email" type="text" value="">
                         <i class="icon_mail_alt"></i>
-                        @Html.ValidationMessageFor(model => model.cEmail, null, new { @class = "label label-danger" })
+                        <span class="field-validation-valid label label-danger" data-valmsg-for="cEmail" data-valmsg-replace="true"></span>
                     </div>
                     <div class="form-group">
                         <label>Constraseña</label>
-                        @Html.PasswordFor(model => model.cPassword, new { @class = "form-control", @placeholder = "Contraseña" })
+                        <input class="form-control" data-val="true" data-val-required="Ingrese un Password!!!" id="cPassword" name="cPassword" placeholder="Contraseña" type="password">
                         <i class="icon_lock_alt"></i>
                     </div>
                     <div class="clearfix add_bottom_15">
                         <div class="checkboxes float-left">
                             <label class="container_check">
                                 Recuérdame
-                                @Html.CheckBoxFor(model => model.isRememberMe)
+                                <input data-val="true" data-val-required="'¿Recordar cuenta?' must not be empty." id="isRememberMe" name="isRememberMe" type="checkbox" value="true">
+                                <input name="isRememberMe" type="hidden" value="false">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
                         <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">¿Se te olvidó tu contraseña?</a></div>
                     </div>
                     <div class="col-xs-12 text-center">
-                        @Html.ValidationMessage("ErrorSesion", new { @class = "label label-danger" })
+                        <span class="field-validation-valid label label-danger" data-valmsg-for="ErrorSesion" data-valmsg-replace="true"></span>
                     </div>
                     <div class="text-center"><input type="submit" value="Iniciar" class="btn_1 full-width"></div>
                     <div class="text-center">
@@ -257,8 +278,8 @@
                     <input type="email" class="form-control" name="email_forgot" id="email_forgot">
                     <i class="icon_mail_alt"></i>
                 </div>
-                <p>Recibirá un correo electrónico con un enlace que le permitirá restablecer su contraseña a una nueva preferida.</p>
-                <div class="text-center"><input type="submit" value="Restablecer la contraseña" class="btn_1"></div>
+                <p>Recibirá un correo electrónico con su contraseña actual.</p>
+                <div class="text-center"><input type="button" value="Restablecer la contraseña" class="btn_1" id="btnRestablecerContrasena"></div>
                 <div class="text-center">
                     <a id="forgotReturn" href="javascript:void(0);">Regresar</a>
                 </div>
@@ -266,32 +287,32 @@
             <div id="registerForm">
                 <form autocomplete="off">
                     <div class="form-group">
-                        <label>Your Name</label>
+                        <label>Tu Nombre</label>
                         <input class="form-control" type="text">
                         <i class="ti-user"></i>
                     </div>
                     <div class="form-group">
-                        <label>Your Last Name</label>
+                        <label>Tu Apellido</label>
                         <input class="form-control" type="text">
                         <i class="ti-user"></i>
                     </div>
                     <div class="form-group">
-                        <label>Your Email</label>
+                        <label>Tu Email</label>
                         <input class="form-control" type="email">
                         <i class="icon_mail_alt"></i>
                     </div>
                     <div class="form-group">
-                        <label>Your password</label>
+                        <label>Tu Password</label>
                         <input class="form-control" type="password" id="password1">
                         <i class="icon_lock_alt"></i>
                     </div>
                     <div class="form-group">
-                        <label>Confirm password</label>
+                        <label>Confirmar Password</label>
                         <input class="form-control" type="password" id="password2">
                         <i class="icon_lock_alt"></i>
                     </div>
                     <div id="pass-info" class="clearfix"></div>
-                    <a href="#0" class="btn_1 rounded full-width add_top_30">Register Now!</a>
+                    <a href="#0" class="btn_1 rounded full-width add_top_30">Registrarme Ahora!</a>
                     <div class="text-center add_top_10">¿Ya tienes una cuenta? <strong><a id="registerReturn" href="javascript:void(0);">Iniciar sesión</a></strong></div>
                 </form>
             </div>

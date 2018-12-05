@@ -5,7 +5,7 @@
         public int start { get; set; }
         public int length { get; set; }
         public string search { get; set; }
-        public int? distrito { get; set; }
-        public int? tipoActividad { get; set; }
+        public string distrito { get; set; }
+        public string tipoActividad { get; set; }
     }
 }

@@ -82,5 +82,17 @@
     "inputFiles": [
       "Content/js/Producto/Busqueda.js"
     ]
+  },
+  {
+    "outputFileName": "Content/js/Producto/Detalle.min.js",
+    "inputFiles": [
+      "Content/js/Producto/Detalle.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/js/Ruta/Active.min.js",
+    "inputFiles": [
+      "Content/js/Ruta/Active.js"
+    ]
   }
 ]

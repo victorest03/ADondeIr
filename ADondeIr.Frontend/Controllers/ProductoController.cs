@@ -15,7 +15,8 @@
     public class ProductoController : BaseController
     {
         private readonly ProductoBl _bl = new ProductoBl();
-        // GET: Producto
+
+        [Autenticado(IsAdmin = true)]
         public ActionResult Index()
         {
             return View();
@@ -27,6 +28,7 @@
             return Json(new { data = _bl.GetAll() }, JsonRequestBehavior.AllowGet);
         }
 
+        [Autenticado(IsAdmin = true)]
         public PartialViewResult PartialMantenimiento(int id = 0)
         {
             Producto model = null;
@@ -37,6 +39,7 @@
             return PartialView("_Mantenimiento", model ?? new Producto());
         }
 
+        [Autenticado(IsAdmin = true)]
         [HttpPost]
         public JsonResult Mantenimiento(Producto model, HttpPostedFileBase foto)
         {
@@ -70,6 +73,7 @@
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [Autenticado(IsAdmin = true)]
         public JsonResult Delete(int id)
         {
             return Json(_bl.Delete(id, GetUser<Usuario>().pkUsuario), JsonRequestBehavior.AllowGet);
@@ -94,7 +98,6 @@
             return View();
         }
         
-
         [JsonResultCustom]
         public JsonResult ListadoLazy(ProductoFilter model)
         {
@@ -109,6 +112,11 @@
                 recordsFiltered = filteredResultsCount,
                 data = dataResult
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Detalle(int id)
+        {
+            return View(_bl.Get(id));
         }
     }
 }

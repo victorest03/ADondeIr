@@ -96,6 +96,7 @@
     <Compile Include="Methods\Encryptor.cs" />
     <Compile Include="Methods\GeneratePassword.cs" />
     <Compile Include="Methods\ReaderMapping.cs" />
+    <Compile Include="Methods\SendMailHelper.cs" />
     <Compile Include="Methods\StorageAzureHelper.cs" />
     <Compile Include="Model\Auditoria.cs" />
     <Compile Include="Model\DataTableModel.cs" />

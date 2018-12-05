@@ -3,8 +3,8 @@
     using Model;
     using Repository;
 
-    public class DistritoDa : Repository<Distrito>
+    public class RutaDa : Repository<Ruta>
     {
-       
+
     }
 }
